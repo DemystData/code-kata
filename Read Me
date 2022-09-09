@@ -1,0 +1,10 @@
+Hi there,
+
+I have completed the task using React as the frontend framework and javascript for the backend tasks.
+
+I just wanted to list all of the libraries, API and hooks I used for this project. 
+
+I have used react-router v6 for page navigation. I have used useState and useEffect hooks for manage changes in state and
+I have used fetch API for handling data from server.
+
+I also used json-server as a tool to simulate server request and to handle json files locally.
