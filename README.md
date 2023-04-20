@@ -113,3 +113,9 @@ If the average asset value across 12 months is greater than the loan amount then
 ## Bonus Points
 
 - Docker
+
+## FAQ
+
+### What is the time-limit on exercise ?
+
+There is none, ensure you submit your best attempt and as soon as you possibly can.
