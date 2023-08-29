@@ -14,24 +14,9 @@ export class BalanceSheetController {
     return this.balanceSheetService.create(createBalanceSheetDto);
   }
 
-  @Get()
-  findAll() {
-    return this.balanceSheetService.findAll();
-  }
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.balanceSheetService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBalanceSheetDto: UpdateBalanceSheetDto) {
-    return this.balanceSheetService.update(+id, updateBalanceSheetDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.balanceSheetService.remove(+id);
+  getFromAccountingSoftware(@Param('id') id: number) {
+    return this.balanceSheetService.getFromAccountingSoftware(+id);
   }
 }
 

@@ -6,18 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BalanceSheetModule = void 0;
+exports.PrismaModule = void 0;
 const common_1 = require("@nestjs/common");
-const balance_sheet_service_1 = require("./balance-sheet.service");
-const balance_sheet_controller_1 = require("./balance-sheet.controller");
-const prisma_service_1 = require("../prisma/prisma.service");
-let BalanceSheetModule = class BalanceSheetModule {
+const prisma_service_1 = require("./prisma.service");
+let PrismaModule = class PrismaModule {
 };
-exports.BalanceSheetModule = BalanceSheetModule;
-exports.BalanceSheetModule = BalanceSheetModule = __decorate([
+exports.PrismaModule = PrismaModule;
+exports.PrismaModule = PrismaModule = __decorate([
     (0, common_1.Module)({
-        controllers: [balance_sheet_controller_1.BalanceSheetController],
-        providers: [balance_sheet_service_1.BalanceSheetService, prisma_service_1.PrismaService],
+        providers: [prisma_service_1.PrismaService],
+        exports: [prisma_service_1.PrismaService],
     })
-], BalanceSheetModule);
-//# sourceMappingURL=balance-sheet.module.js.map
+], PrismaModule);
+//# sourceMappingURL=prisma.module.js.map

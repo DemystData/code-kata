@@ -1,26 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBalanceSheetDto } from './dto/create-balance-sheet.dto';
 import { UpdateBalanceSheetDto } from './dto/update-balance-sheet.dto';
 
 @Injectable()
 export class BalanceSheetService {
+
+  constructor(private prisma: PrismaService) {}
+
   create(createBalanceSheetDto: CreateBalanceSheetDto) {
-    return 'This action adds a new balanceSheet';
+    return this.prisma.balance_sheet.create({data: createBalanceSheetDto})
   }
 
   findAll() {
     return `This action returns all balanceSheet`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} balanceSheet`;
-  }
-
-  update(id: number, updateBalanceSheetDto: UpdateBalanceSheetDto) {
-    return `This action updates a #${id} balanceSheet`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} balanceSheet`;
+  getFromAccountingSoftware(id: number) {
+    return this.prisma.balance_sheet.findMany({where: {company_id: id}});
   }
 }
