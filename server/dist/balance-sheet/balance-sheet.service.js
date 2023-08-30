@@ -19,11 +19,17 @@ let BalanceSheetService = class BalanceSheetService {
     create(createBalanceSheetDto) {
         return this.prisma.balance_sheet.create({ data: createBalanceSheetDto });
     }
-    findAll() {
-        return `This action returns all balanceSheet`;
-    }
     async getFromAccountingSoftware(id) {
         return await this.prisma.balance_sheet.findMany({ where: { company_id: id } });
+    }
+    async getFromDecisionEngine(getFromDecisionEngineDto) {
+        let balance_sheet = await this.prisma.balance_sheet.findMany({ where: { company_id: getFromDecisionEngineDto.account_provider },
+            orderBy: [{
+                    year: 'desc'
+                }, {
+                    month: 'desc'
+                }] });
+        return balance_sheet;
     }
 };
 exports.BalanceSheetService = BalanceSheetService;

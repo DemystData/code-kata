@@ -3,4 +3,5 @@ export declare class GetFromDecisionEngineDto {
     year: number;
     profitOrLossSummary: number;
     preAssessmentValue: number;
+    account_provider: number;
 }

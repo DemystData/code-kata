@@ -24,4 +24,5 @@ model balance_sheet{
   month Int
   profitOrLoss Int
   assetsValue Int
+  key String
 }

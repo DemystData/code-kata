@@ -30,4 +30,8 @@ __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
 ], GetFromDecisionEngineDto.prototype, "preAssessmentValue", void 0);
-//# sourceMappingURL=update-balance-sheet.dto.js.map
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
+], GetFromDecisionEngineDto.prototype, "account_provider", void 0);
+//# sourceMappingURL=get-from-de.dto.js.map

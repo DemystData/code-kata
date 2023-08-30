@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const balance_sheet_service_1 = require("./balance-sheet.service");
 const create_balance_sheet_dto_1 = require("./dto/create-balance-sheet.dto");
 const swagger_1 = require("@nestjs/swagger");
+const get_from_de_dto_1 = require("./dto/get-from-de.dto");
 let BalanceSheetController = class BalanceSheetController {
     constructor(balanceSheetService) {
         this.balanceSheetService = balanceSheetService;
@@ -26,6 +27,9 @@ let BalanceSheetController = class BalanceSheetController {
     }
     getFromAccountingSoftware(id) {
         return this.balanceSheetService.getFromAccountingSoftware(+id);
+    }
+    getFromDecisionEngine(getFromDecisionEngineDto) {
+        return this.balanceSheetService.getFromDecisionEngine(getFromDecisionEngineDto);
     }
 };
 exports.BalanceSheetController = BalanceSheetController;
@@ -37,12 +41,19 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BalanceSheetController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)(':id'),
+    (0, common_1.Get)('accounting-software/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], BalanceSheetController.prototype, "getFromAccountingSoftware", null);
+__decorate([
+    (0, common_1.Post)('decision-engine'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [get_from_de_dto_1.GetFromDecisionEngineDto]),
+    __metadata("design:returntype", void 0)
+], BalanceSheetController.prototype, "getFromDecisionEngine", null);
 exports.BalanceSheetController = BalanceSheetController = __decorate([
     (0, swagger_1.ApiTags)('Balance Sheet'),
     (0, common_1.Controller)('balance-sheet'),
