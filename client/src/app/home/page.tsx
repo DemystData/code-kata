@@ -39,19 +39,28 @@ export default function BootstrapForm() {
               <label htmlFor="name" className="form-label">
                 Name
               </label>
-              <input type="text" autoComplete='off' value={name} onChange={changeNameHandler} className="form-control" id="username" required />
+              <input type="text" required autoComplete='off' value={name} 
+              onChange={changeNameHandler} className={`form-control ${name === '' ? 'is-invalid' : ''}`}
+               id="username" />
+               {name === '' && <div className="invalid-feedback">Name is required</div>}
             </div>
             <div className="mb-3">
               <label htmlFor="business_name" className="form-label">
                 Business Name
               </label>
-              <input type="text" autoComplete='off' value={businessName} onChange={changeBusinessNameHandler} className="form-control" id="business_name" required />
+              <input type="text" required autoComplete='off' value={businessName} 
+              onChange={changeBusinessNameHandler} className={`form-control ${businessName === '' ? 'is-invalid' : ''}`} 
+              id="business_name" />
+              {businessName === '' && <div className="invalid-feedback">Business Name is required</div>}
             </div>
             <div className="mb-3">
               <label htmlFor="loan_amount" className="form-label">
                 Loan Amount
               </label>
-              <input type="number" autoComplete='off' value={loanAmount} onChange={changeLoanAmountHandler} className="form-control" id="loan_amount" required />
+              <input type="number" required autoComplete='off' value={loanAmount} 
+              onChange={changeLoanAmountHandler} className={`form-control ${loanAmount === 0 ? 'is-invalid' : ''}`} 
+              id="loan_amount" />
+              {loanAmount === 0 && <div className="invalid-feedback">Loan Amount is required</div>}
             </div>
             <div className='mb-3'>
               <label className='form-label'>Account Provider</label>
@@ -69,7 +78,7 @@ export default function BootstrapForm() {
                     businessName: businessName,
                     loanAmount: loanAmount,
                     accountProvider: accountProvider
-                  }}}>Submit</Link>
+                  }}} style={{textDecoration: 'none', color: 'black'}}>Submit</Link>
             </button>
           </form>
       </div>
