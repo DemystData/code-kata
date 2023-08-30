@@ -11,6 +11,7 @@ export default function BootstrapForm() {
   const [businessName, setBusinessName] = useState('');
   const [loanAmount, setLoanAmount] = useState(0);
   const [accountProvider, setAccountProvider] = useState('');
+  const [year, setYear] = useState(0)
   
   const changeNameHandler = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setName(event.target.value);
@@ -27,6 +28,10 @@ export default function BootstrapForm() {
   const changeAccountProviderHandler = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setAccountProvider(event.target.value);
   };
+
+  const changeYearHandler = (event: any)=>{
+    setYear(event.target.value)
+  }
 
   return (
     <>
@@ -54,6 +59,15 @@ export default function BootstrapForm() {
               {businessName === '' && <div className="invalid-feedback">Business Name is required</div>}
             </div>
             <div className="mb-3">
+              <label htmlFor="year" className="form-label">
+                Year Established
+              </label>
+              <input type="number" required autoComplete='off' value={year} 
+              onChange={changeYearHandler} className={`form-control ${year === 0 ? 'is-invalid' : ''}`} 
+              id="year" />
+              {year === 0 && <div className="invalid-feedback">Year is required</div>}
+            </div>
+            <div className="mb-3">
               <label htmlFor="loan_amount" className="form-label">
                 Loan Amount
               </label>
@@ -77,6 +91,7 @@ export default function BootstrapForm() {
                     query: {
                       name: name,
                       businessName: businessName,
+                      year: year,
                       loanAmount: loanAmount,
                       accountProvider: accountProvider
                     }}} style={{textDecoration: 'none', color: 'white'}}>Submit</Link>

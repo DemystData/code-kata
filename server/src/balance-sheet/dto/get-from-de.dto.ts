@@ -12,11 +12,5 @@ export class GetFromDecisionEngineDto {
     loan_amount: number
 
     @ApiProperty()
-    profitOrLossSummary: number
-
-    @ApiProperty()
-    assetValue: number
-
-    @ApiProperty()
     account_provider: number
 }

@@ -12,9 +12,20 @@ async function callAPI(id: any){
 }
 
 async function Review(props: any){
-    // console.log("Review: ", props.searchParams)
     let res=await callAPI(props.searchParams.accountProvider)
-    // console.log(res.data)
+
+    const handleSubmit=async ()=>{
+        let request: {}={
+            business_name: props.searchParams.businessName,
+            year: parseInt(props.searchParams.year, 10),
+            loan_amount: parseInt(props.searchParams.loanAmount, 10),
+            account_provider: parseInt(props.searchParams.accountProvider, 10)
+        }
+        console.log(request)
+        let res=await RequestSheetService.getDecisionEngineResult(request)
+        console.log(res)
+    }
+
     return(
         <>
             <Navbar/><br/><br/>
@@ -45,12 +56,10 @@ async function Review(props: any){
                     </table>
                 </div>
         </div>
-        <button type="submit" className='btn btn-success' style={{marginLeft: '650px', width: '100px'}}>Submit</button>
+        <button type="submit" onClick={handleSubmit} className='btn btn-success' style={{marginLeft: '650px', width: '100px'}}>Submit</button>
         <br/>
       </>
     )
 }
 
 export default Review
-
-// table-striped table-bordered table-hover

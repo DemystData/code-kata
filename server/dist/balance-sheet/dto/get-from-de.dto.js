@@ -29,13 +29,5 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
-], GetFromDecisionEngineDto.prototype, "profitOrLossSummary", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Number)
-], GetFromDecisionEngineDto.prototype, "assetValue", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Number)
 ], GetFromDecisionEngineDto.prototype, "account_provider", void 0);
 //# sourceMappingURL=get-from-de.dto.js.map
