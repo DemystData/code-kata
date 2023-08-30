@@ -70,16 +70,19 @@ export default function BootstrapForm() {
                 <option value="2">MYOB</option>
               </select>
             </div>
-            <button type="submit" className={styles.btn}>
-                <Link href={{
-                  pathname: '/review',
-                  query: {
-                    name: name,
-                    businessName: businessName,
-                    loanAmount: loanAmount,
-                    accountProvider: accountProvider
-                  }}} style={{textDecoration: 'none', color: 'black'}}>Submit</Link>
-            </button>
+            <div className={styles.btn}>
+              <button type="submit" className='btn btn-success'>
+                  <Link href={{
+                    pathname: '/review',
+                    query: {
+                      name: name,
+                      businessName: businessName,
+                      loanAmount: loanAmount,
+                      accountProvider: accountProvider
+                    }}} style={{textDecoration: 'none', color: 'white'}}>Submit</Link>
+              </button>
+              <button type='reset' className='btn btn-secondary'>Reset</button>
+            </div>
           </form>
       </div>
     </div>

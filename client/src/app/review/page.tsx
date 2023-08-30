@@ -45,7 +45,8 @@ async function Review(props: any){
                     </table>
                 </div>
         </div>
-        
+        <button type="submit" className='btn btn-success' style={{marginLeft: '650px', width: '100px'}}>Submit</button>
+        <br/>
       </>
     )
 }
