@@ -20,7 +20,13 @@ let BalanceSheetService = class BalanceSheetService {
         return this.prisma.balance_sheet.create({ data: createBalanceSheetDto });
     }
     async getFromAccountingSoftware(id) {
-        return await this.prisma.balance_sheet.findMany({ where: { company_id: id } });
+        return await this.prisma.balance_sheet.findMany({ where: { company_id: id },
+            orderBy: [{
+                    year: 'desc'
+                },
+                {
+                    month: 'desc'
+                }] });
     }
     getValue(balance_sheet) {
         let count = 0;

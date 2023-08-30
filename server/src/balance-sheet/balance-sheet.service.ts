@@ -13,7 +13,13 @@ export class BalanceSheetService {
   }
 
   async getFromAccountingSoftware(id: number) {
-    return await this.prisma.balance_sheet.findMany({where: {company_id: id}});
+    return await this.prisma.balance_sheet.findMany({where: {company_id: id},
+      orderBy: [{
+        year: 'desc'
+      },
+      {
+        month: 'desc'
+      }]});
   }
 
   getValue(balance_sheet){
