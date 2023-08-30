@@ -19,3 +19,15 @@
     text-decoration: none;
     color: black;
   }
+
+  .centerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; 
+    text-align: center;
+  }
+  
+  .tableContainer {
+    width: 70%; 
+  }

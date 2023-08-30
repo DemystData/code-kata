@@ -3,13 +3,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import  {useRouter}  from 'next/router';
 import styles from '../components/Navbar.module.css';
-import RequestSheetService from '../service/request-sheet'
 import Link from 'next/link';
 
 export default function BootstrapForm() {
-  // const router = useRouter();
   const [name, setName] = useState('');
   const [businessName, setBusinessName] = useState('');
   const [loanAmount, setLoanAmount] = useState(0);
@@ -30,26 +27,6 @@ export default function BootstrapForm() {
   const changeAccountProviderHandler = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setAccountProvider(event.target.value);
   };
-
-  // async function handleSubmit(event: any) {
-  //    event.preventDefault();
-  //   let request={ 
-  //     account_provider: accountProvider
-  //   }
-  //   // console.log("Request: ", request)
-  //   try{
-  //     const res=await RequestSheetService.getBalanceSheet(request)
-  //     // console.log(res)
-  //     router.push({
-  //         pathname: '/review',
-  //         query: {data: JSON.stringify(res)}
-  //       }, '/review')
-  //   }
-  //   catch(error){
-  //     console.error('Error:', error);
-  //   }
-    
-  // }
 
   return (
     <>
@@ -79,7 +56,7 @@ export default function BootstrapForm() {
             <div className='mb-3'>
               <label className='form-label'>Account Provider</label>
               <select className="form-select" aria-label="Default select example" value={accountProvider} onChange={changeAccountProviderHandler}>
-                {/* <option selected>Select</option> */}
+                <option selected>Select</option>
                 <option value="1">Xero</option>
                 <option value="2">MYOB</option>
               </select>
