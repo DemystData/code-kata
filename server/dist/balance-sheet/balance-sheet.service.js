@@ -17,10 +17,22 @@ let BalanceSheetService = class BalanceSheetService {
         this.prisma = prisma;
     }
     create(createBalanceSheetDto) {
+        createBalanceSheetDto.key = createBalanceSheetDto.year.toString() + createBalanceSheetDto.month.toString();
         return this.prisma.balance_sheet.create({ data: createBalanceSheetDto });
     }
     async getFromAccountingSoftware(id) {
         return await this.prisma.balance_sheet.findMany({ where: { company_id: id } });
+    }
+    getValue(balance_sheet) {
+        let count = 0;
+        let profitOrLossSummary = 0, totalAssetValue = 0;
+        for (const item of balance_sheet) {
+            profitOrLossSummary += item.profitOrLoss;
+            totalAssetValue += item.assetsValue;
+            count++;
+            if (count == 12)
+                return [profitOrLossSummary, totalAssetValue];
+        }
     }
     async getFromDecisionEngine(getFromDecisionEngineDto) {
         let balance_sheet = await this.prisma.balance_sheet.findMany({ where: { company_id: getFromDecisionEngineDto.account_provider },
@@ -29,7 +41,8 @@ let BalanceSheetService = class BalanceSheetService {
                 }, {
                     month: 'desc'
                 }] });
-        return balance_sheet;
+        let result = this.getValue(balance_sheet);
+        return result;
     }
 };
 exports.BalanceSheetService = BalanceSheetService;

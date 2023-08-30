@@ -11,7 +11,6 @@ export declare class BalanceSheetService {
         month: number;
         profitOrLoss: number;
         assetsValue: number;
-        key: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     getFromAccountingSoftware(id: number): Promise<{
         id: number;
@@ -20,15 +19,7 @@ export declare class BalanceSheetService {
         month: number;
         profitOrLoss: number;
         assetsValue: number;
-        key: string;
     }[]>;
-    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<{
-        id: number;
-        company_id: number;
-        year: number;
-        month: number;
-        profitOrLoss: number;
-        assetsValue: number;
-        key: string;
-    }[]>;
+    getValue(balance_sheet: any): number[];
+    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<number[]>;
 }

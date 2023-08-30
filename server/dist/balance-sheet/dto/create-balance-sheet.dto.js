@@ -34,4 +34,8 @@ __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
 ], CreateBalanceSheetDto.prototype, "assetsValue", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateBalanceSheetDto.prototype, "key", void 0);
 //# sourceMappingURL=create-balance-sheet.dto.js.map

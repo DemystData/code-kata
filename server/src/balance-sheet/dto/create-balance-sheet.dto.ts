@@ -16,4 +16,7 @@ export class CreateBalanceSheetDto {
 
     @ApiProperty()
     assetsValue: number
+
+    @ApiProperty()
+    key: string
 }
