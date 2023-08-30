@@ -12,7 +12,7 @@ export declare class BalanceSheetService {
         assetsValue: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): string;
-    getFromAccountingSoftware(id: number): import(".prisma/client").Prisma.PrismaPromise<{
+    getFromAccountingSoftware(id: number): Promise<{
         id: number;
         company_id: number;
         year: number;

@@ -11,7 +11,7 @@ export declare class BalanceSheetController {
         profitOrLoss: number;
         assetsValue: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    getFromAccountingSoftware(id: number): import(".prisma/client").Prisma.PrismaPromise<{
+    getFromAccountingSoftware(id: number): Promise<{
         id: number;
         company_id: number;
         year: number;

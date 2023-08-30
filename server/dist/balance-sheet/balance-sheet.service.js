@@ -22,8 +22,8 @@ let BalanceSheetService = class BalanceSheetService {
     findAll() {
         return `This action returns all balanceSheet`;
     }
-    getFromAccountingSoftware(id) {
-        return this.prisma.balance_sheet.findMany({ where: { company_id: id } });
+    async getFromAccountingSoftware(id) {
+        return await this.prisma.balance_sheet.findMany({ where: { company_id: id } });
     }
 };
 exports.BalanceSheetService = BalanceSheetService;
