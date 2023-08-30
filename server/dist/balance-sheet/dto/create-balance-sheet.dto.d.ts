@@ -4,5 +4,4 @@ export declare class CreateBalanceSheetDto {
     month: number;
     profitOrLoss: number;
     assetsValue: number;
-    key: string;
 }

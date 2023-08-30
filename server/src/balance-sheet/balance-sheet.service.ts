@@ -9,8 +9,6 @@ export class BalanceSheetService {
   constructor(private prisma: PrismaService) {}
 
   create(createBalanceSheetDto: CreateBalanceSheetDto) {
-    createBalanceSheetDto.key=createBalanceSheetDto.year.toString()+createBalanceSheetDto.month.toString()
-    // console.log(createBalanceSheetDto.key)
     return this.prisma.balance_sheet.create({data: createBalanceSheetDto})
   }
 

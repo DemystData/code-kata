@@ -17,7 +17,6 @@ let BalanceSheetService = class BalanceSheetService {
         this.prisma = prisma;
     }
     create(createBalanceSheetDto) {
-        createBalanceSheetDto.key = createBalanceSheetDto.year.toString() + createBalanceSheetDto.month.toString();
         return this.prisma.balance_sheet.create({ data: createBalanceSheetDto });
     }
     async getFromAccountingSoftware(id) {
