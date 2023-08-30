@@ -21,5 +21,6 @@ export declare class BalanceSheetService {
         assetsValue: number;
     }[]>;
     getValue(balance_sheet: any): number[];
-    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<number[]>;
+    decisionEngine(preAssessment: any, loan_amount: any): any[];
+    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<any[]>;
 }

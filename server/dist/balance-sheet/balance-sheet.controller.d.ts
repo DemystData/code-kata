@@ -20,5 +20,5 @@ export declare class BalanceSheetController {
         profitOrLoss: number;
         assetsValue: number;
     }[]>;
-    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<number[]>;
+    getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto): Promise<any[]>;
 }

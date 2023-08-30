@@ -9,10 +9,13 @@ export class GetFromDecisionEngineDto {
     year: number
 
     @ApiProperty()
+    loan_amount: number
+
+    @ApiProperty()
     profitOrLossSummary: number
 
     @ApiProperty()
-    preAssessmentValue: number
+    assetValue: number
 
     @ApiProperty()
     account_provider: number

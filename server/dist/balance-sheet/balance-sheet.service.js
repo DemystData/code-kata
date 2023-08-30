@@ -33,6 +33,9 @@ let BalanceSheetService = class BalanceSheetService {
                 return [profitOrLossSummary, totalAssetValue];
         }
     }
+    decisionEngine(preAssessment, loan_amount) {
+        return [preAssessment, ((preAssessment / 100) * loan_amount)];
+    }
     async getFromDecisionEngine(getFromDecisionEngineDto) {
         let balance_sheet = await this.prisma.balance_sheet.findMany({ where: { company_id: getFromDecisionEngineDto.account_provider },
             orderBy: [{
@@ -41,7 +44,12 @@ let BalanceSheetService = class BalanceSheetService {
                     month: 'desc'
                 }] });
         let result = this.getValue(balance_sheet);
-        return result;
+        let preAssessment = 20;
+        if (result[0] > 0)
+            preAssessment = 60;
+        if (result[1] > getFromDecisionEngineDto.loan_amount)
+            preAssessment = 100;
+        return this.decisionEngine(preAssessment, getFromDecisionEngineDto.loan_amount);
     }
 };
 exports.BalanceSheetService = BalanceSheetService;

@@ -25,11 +25,15 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
+], GetFromDecisionEngineDto.prototype, "loan_amount", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
 ], GetFromDecisionEngineDto.prototype, "profitOrLossSummary", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
-], GetFromDecisionEngineDto.prototype, "preAssessmentValue", void 0);
+], GetFromDecisionEngineDto.prototype, "assetValue", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
