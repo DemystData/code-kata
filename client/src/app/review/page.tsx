@@ -5,6 +5,7 @@ import RequestSheetService from '../service/request-sheet'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../components/Navbar.module.css';
 import Navbar from '../components/Navbar';
+import Swal from 'sweetalert2';
 
 async function callAPI(id: any){
     let res=await RequestSheetService.getBalanceSheet({account_provider: id})
@@ -21,9 +22,14 @@ async function Review(props: any){
             loan_amount: parseInt(props.searchParams.loanAmount, 10),
             account_provider: parseInt(props.searchParams.accountProvider, 10)
         }
-        console.log(request)
+        // console.log(request)
         let res=await RequestSheetService.getDecisionEngineResult(request)
         console.log(res)
+        Swal.fire(
+            res.data[0]+'% of your loan amount is approved',
+            'Amount approved : '+res.data[1],
+            'success'
+          )
     }
 
     return(
