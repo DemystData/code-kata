@@ -1,0 +1,19 @@
+To set up the server
+
+Node version used is 18.15.0
+To install NestJS : npm i -g @nestjs/cli
+To set up swagger documentation : npm install --save @nestjs/swagger
+To run : npm run start:dev
+To install prisma : npm install prisma --save-dev
+To create prisma initial setup : npx prisma init
+Provide the db credentials in the form of url in .env file
+Migrate db : npx prisma migrate dev --name <name>
+Test cases : npm i --save-dev @nestjs/testing
+To run the test case : npm run test:watch
+
+
+To set up the client
+
+To run : npm run dev
+Alerts : npm install sweetalert2
+
