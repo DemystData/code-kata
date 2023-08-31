@@ -1,3 +1,10 @@
+Backend technology used : NestJS
+Frontend technology used : NextJS
+DB : PostgreSQL
+ORM : Prisma
+DB schema can be found in server/prisma/schema.prisma
+Test cases : balance-sheet.controller.spec.ts and balance-sheet.service.spec.ts files
+
 To set up the server
 
 Node version used is 18.15.0
@@ -16,4 +23,3 @@ To set up the client
 
 To run : npm run dev
 Alerts : npm install sweetalert2
-
