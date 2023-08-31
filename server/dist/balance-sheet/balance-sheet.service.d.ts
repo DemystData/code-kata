@@ -1,8 +1,8 @@
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateBalanceSheetDto } from './dto/create-balance-sheet.dto';
 import { GetFromDecisionEngineDto } from './dto/get-from-de.dto';
 export declare class BalanceSheetService {
-    private prisma;
+    private readonly prisma;
     constructor(prisma: PrismaService);
     create(createBalanceSheetDto: CreateBalanceSheetDto): import(".prisma/client").Prisma.Prisma__balance_sheetClient<{
         id: number;
