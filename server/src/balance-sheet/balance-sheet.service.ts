@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateBalanceSheetDto } from './dto/create-balance-sheet.dto';
 import { GetFromDecisionEngineDto } from './dto/get-from-de.dto';
 
 @Injectable()
 export class BalanceSheetService {
 
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   create(createBalanceSheetDto: CreateBalanceSheetDto) {
     return this.prisma.balance_sheet.create({data: createBalanceSheetDto})
@@ -30,8 +30,9 @@ export class BalanceSheetService {
       totalAssetValue+=item.assetsValue
       count++
       if(count==12)
-        return [profitOrLossSummary, totalAssetValue]
+        break
     }
+    return [profitOrLossSummary, totalAssetValue]
   }
 
   decisionEngine(preAssessment, loan_amount){
