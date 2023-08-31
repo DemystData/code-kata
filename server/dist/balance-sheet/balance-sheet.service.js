@@ -36,8 +36,9 @@ let BalanceSheetService = class BalanceSheetService {
             totalAssetValue += item.assetsValue;
             count++;
             if (count == 12)
-                return [profitOrLossSummary, totalAssetValue];
+                break;
         }
+        return [profitOrLossSummary, totalAssetValue];
     }
     decisionEngine(preAssessment, loan_amount) {
         return [preAssessment, ((preAssessment / 100) * loan_amount)];
