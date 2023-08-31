@@ -14,11 +14,13 @@ export class BalanceSheetController {
     return this.balanceSheetService.create(createBalanceSheetDto);
   }
 
+  //to get the balance sheet of the company
   @Get('accounting-software/:id')
   getFromAccountingSoftware(@Param('id') id: number) {
     return this.balanceSheetService.getFromAccountingSoftware(+id);
   }
 
+  //to get the final result from decision engine
   @Post('decision-engine')
   getFromDecisionEngine(@Body() getFromDecisionEngineDto: GetFromDecisionEngineDto){
     return this.balanceSheetService.getFromDecisionEngine(getFromDecisionEngineDto)
