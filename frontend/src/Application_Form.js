@@ -30,7 +30,7 @@ const Application_Form=()=>{
 
     useEffect(()=>{
         if(checkbox_value==true && formdata[0].account_provider){
-        fetch(`http://localhost:8080/${formdata[0].account_provider}`)
+        fetch(`https://effective-memory-rj96j9jx6vwhqwx-8080.app.github.dev/${formdata[0].account_provider}`)
         .then(response=>response.json())
         .then(data=>setbalancesheet(data))
         .catch(error=>console.error(error))
@@ -50,7 +50,7 @@ const Application_Form=()=>{
     const SubmitForm=(e)=>{
         e.preventDefault();
         const senddata={formdata:formdata,balancesheet:balancesheet};
-        const response=fetch('http://localhost:8080/decision_maker',{
+        const response=fetch('https://effective-memory-rj96j9jx6vwhqwx-8080.app.github.dev/decision_maker',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ return(
             <th>Year</th>
             <th>Month</th>
             <th>Profit or Loss</th>
-            <th>Assert Value</th>
+            <th>Assets Value</th>
             </tr>
             {
                 balancesheet.map((list,index)=>{
@@ -156,8 +156,8 @@ return(
                         <tr key={index}>
                             <td className='balance_sheet_data'><input className='balance_sheet_input' value={balancesheet[index].year} name={"year"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
                             <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.month} name={"month"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.profitorloss} name={"profitorloss"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.assertvalue} name={"assertvalue"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.profitOrLoss} name={"profitOrLoss"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.assetsValue} name={"assetsValue"} id={index} disabled={input_disable} onChange={(e)=>ChangeBalanceSheet(e)}/></td>
                         </tr>
                     );
                 })
