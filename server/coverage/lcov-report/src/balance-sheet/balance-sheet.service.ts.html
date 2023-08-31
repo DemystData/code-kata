@@ -121,7 +121,18 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,22 +147,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,21 +173,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -193,6 +215,7 @@ export class BalanceSheetService {
 <span class="cstat-no" title="statement not covered" >    return this.prisma.balance_sheet.create({data: createBalanceSheetDto})</span>
   }
 &nbsp;
+  //to get the balance sheet in descending order of year and month
   async getFromAccountingSoftware(id: number) {
     return await this.prisma.balance_sheet.findMany({where: {company_id: id},
       orderBy: [{
@@ -203,6 +226,7 @@ export class BalanceSheetService {
       }]});
   }
 &nbsp;
+  //to get the overall profit/loss summary and total asset value
   getValue(balance_sheet){
     let count=0
     let profitOrLossSummary=0, totalAssetValue=0
@@ -210,28 +234,37 @@ export class BalanceSheetService {
       profitOrLossSummary+=item.profitOrLoss
       totalAssetValue+=item.assetsValue
       count++
+      //to check only for 12 months
       <span class="missing-if-branch" title="if path not taken" >I</span>if(count==12)
 <span class="cstat-no" title="statement not covered" >        break</span>
     }
     return [profitOrLossSummary, totalAssetValue]
   }
 &nbsp;
+  //to determine the amount approved
   decisionEngine(preAssessment, loan_amount){
     return [preAssessment, ((preAssessment/100)*loan_amount)]
   }
 &nbsp;
   async getFromDecisionEngine(getFromDecisionEngineDto: GetFromDecisionEngineDto){
+    //get the balance sheet in descending order of year and month
     let balance_sheet=await this.prisma.balance_sheet.findMany({where: {company_id: getFromDecisionEngineDto.account_provider}, 
       orderBy: [{
         year: 'desc'
       }, {
         month: 'desc'
       }]})
+&nbsp;
+    //get the overall profit/loss and total asset value
     let result=this.getValue(balance_sheet)
     // console.log(result)
-    let preAssessment=20
+    let preAssessment=20  //default value
+&nbsp;
+    //if profit then 60% of loan is approved
     if(result[0]&gt;0)
       preAssessment=60
+&nbsp;
+    //if total asset value &gt; loan amount then 100% loan apprived
     <span class="missing-if-branch" title="if path not taken" >I</span>if(result[1]&gt;getFromDecisionEngineDto.loan_amount)
 <span class="cstat-no" title="statement not covered" >      preAssessment=100</span>
     return this.decisionEngine(preAssessment, getFromDecisionEngineDto.loan_amount)
@@ -244,7 +277,7 @@ export class BalanceSheetService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-31T02:46:43.370Z
+                at 2023-08-31T09:40:48.023Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
