@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  width : 50%;
+  margin-left : 20%;
+  text-align: center;
+  gap:20px;
+}
+input {
+  padding: 8px;
+  font-size: 20px;
+}
+select {
+  padding: 7px 30px;
+  font-size: 20px;
+  justify-content: left;
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 50px auto;
+}
+
+th, td, tr, tbody {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom : 15px;
+  margin-top: 15px;
+}
+button:hover {
+  background-color: red; 
+}
+
+.business-details {
+  width : 30%;
+}
+
+.profitLoss {
+  width : 60%;
+}
+
+.decision {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
+  gap:10px;
+}
+
+.result {
+  font-size: 30px;
+}
+
+
