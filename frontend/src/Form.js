@@ -93,6 +93,24 @@ const Form =()=>{
             }
         }
 
+        const removebutton=(e)=>{
+            e.preventDefault();
+            const confirm=window.confirm("Want to delete this entry?")
+            if(confirm){
+            const arr=[...balancesheet];
+            arr.splice(e.target.id,1);
+            setbalancesheet(arr);
+            }
+        }
+
+        const addbutton=(e)=>{
+            e.preventDefault();
+            const confirm=window.confirm("Want to add new entry?")
+            if(confirm){
+            setbalancesheet(l=>[...l,{}]);
+            }
+        }
+
 return(
 <div className='form_body'>
     <form method="Post" id="form" onSubmit={(e)=>submitForm(e)} >
@@ -168,20 +186,23 @@ return(
             <th>Month</th>
             <th>Profit or Loss</th>
             <th>Assets Value</th>
+            <th></th>
             </tr>
             {
                 balancesheet.map((list,index)=>{
                     return(
                         <tr key={index}>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={balancesheet[index].year} name={"year"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)}/></td>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.month} name={"month"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)}/></td>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.profitOrLoss} name={"profitOrLoss"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)}/></td>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.assetsValue} name={"assetsValue"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)}/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={balancesheet[index].year} name={"year"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.month} name={"month"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.profitOrLoss} name={"profitOrLoss"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.assetsValue} name={"assetsValue"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
+                            <td className='balance_sheet_remove'><button disabled={input_disable} className="remove_button" id={index} onClick={(e)=>removebutton(e)}>X</button></td>
                         </tr>
                     );
                 })
             }
         </table>
+                <button disabled={input_disable} className="add_button" onClick={(e)=>addbutton(e)}>+</button>
         </div>
             ):null
         }

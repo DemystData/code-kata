@@ -144,3 +144,23 @@ width: 100%;
   box-Shadow:0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: rgb(219, 224, 224);
 }
+
+.remove_button{
+border-radius: 10px;
+color:rgb(255, 0, 0);
+font-weight: bold;
+
+}
+.add_button{
+border-radius: 20px;
+color:rgb(0, 87, 248);
+font-size: 20px;
+font-weight: bold;
+margin-left: 50%;
+margin-bottom: 2%;
+}
+
+.balance_sheet_remove{
+  padding:5px 0;
+  width:3%;
+}
