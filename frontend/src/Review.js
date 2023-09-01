@@ -17,15 +17,16 @@ const Review=(props)=>{
         .then(response=>{
             if(response.ok){
                 
-               navigate('/sucess');
+               navigate('/sucess',{replace:true});
             }
             else{
-                navigate('/error');
+                navigate('/error',{replace:true});
             }
         })
         .catch(error=>console.log(error));
     }
 return(
+<div style={{backgroundColor:"blueviolet",position:"absolute",top:0,width:"100%"}}>
 <div className='form_body'>
         <h2 style={{textAlign:"center",paddingTop:"30px"}}>Loan Application Form</h2>
         <div style={{marginLeft:"5%",marginTop:"5%",width:"90%"}}>
@@ -94,6 +95,7 @@ return(
         </div>
         <button className="back_button" onClick={(e)=>{e.preventDefault();navigate('/form')}}>Back</button>
         <button className='submit_button' type="submit" onClick={(e)=>submitForm(e)}>Submit</button>
+    </div>
     </div>
 );
 }

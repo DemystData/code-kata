@@ -10,7 +10,8 @@
     height: 20%;
     position: absolute;
     top:0;
-    background-color: deepskyblue;
+    background-color: #C5CBE3;
+    box-Shadow:2px 4px 2px 2px rgb(0,0,0,0.5);
 }
 
 .first_page_footer{
@@ -18,7 +19,8 @@
   height: 10%;
   position: absolute;
   bottom: 0;
-  background-color: deepskyblue;
+  background-color: #C5CBE3;
+  box-Shadow:2px 2px 8px 2px rgb(0,0,0,1);
 }
 
 .first_page_section{
@@ -26,6 +28,7 @@ position:fixed;
 top:20%;
 height: 70%;
 width: 100%;
+background-color: #f8f6f3;
 }
 
 .form_body{
@@ -136,7 +139,7 @@ width: 100%;
   border-radius: 0 0 25px 25px;
   padding-bottom: 20px;
   box-Shadow:0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgb(219, 224, 224);
+  background-color:#0C4EA3;
 }
 
 .remove_button{
