@@ -68,22 +68,7 @@ width: 100%;
   margin-top: 10px;
 }
 
-.submit_button{
-  margin-Left:290px;
-  margin-top: 30px;
-  font-size: 20px;
-  padding: 10px;
-  background-color: rgb(2, 126, 43);
-  color: white;
-  border:none;
-  border-radius: 25px;
-}
 
-.submit_button:hover{
-  color: black;
-  background-color: white;
-  border: 1px solid black;
-}
 
 .form_checkbox{
   margin-top: 10px;
@@ -109,12 +94,21 @@ width: 100%;
   padding:10px 0;
   width:22.5%;
 }
-
 .balance_sheet_input{
   width:80%;
   margin:0 5px;
 }
-
+.balance_sheet_table_review{
+  border-Collapse:collapse;
+  margin-Left:5%;
+  margin-right: 5%;
+  margin-Top:5%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.balance_sheet_data_review{
+  text-align: center;
+}
 .table_button{
   width:50px;
   float: right;
@@ -163,4 +157,55 @@ margin-bottom: 2%;
 .balance_sheet_remove{
   padding:5px 0;
   width:3%;
+}
+.back_button{
+  margin-Left:10%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.review_button{
+  margin-left: 42%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.submit_button{
+  float: right;
+  margin-right: 10%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.submit_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.review_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.back_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
 }

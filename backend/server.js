@@ -91,7 +91,7 @@ else{
     pre_assessment=20;
 }
     request_decisionmaker=[{business_name:formdata[0].company_name,year_established:formdata[0].year_established,balancesheet:balancesheet,pre_assessment:pre_assessment}]
-  //console.log(JSON.stringify(request_decisionmaker, null, 2));
+  console.log(JSON.stringify(request_decisionmaker, null, 2));
   res.status(200).json(request_decisionmaker);
 });
 
