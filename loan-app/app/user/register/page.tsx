@@ -177,7 +177,15 @@ export default function Register() {
                 <Button disabled={loading} type="submit" className="mt-1">
                   {loading ? 'Registering...' : 'Join Now'}
                 </Button>
-                <Button disabled={loading} variant={'outline'} className="mt-1" onClick={() => router.push('/')}>
+                <Button
+                  disabled={loading}
+                  variant={'outline'}
+                  className="mt-1"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push('/');
+                  }}
+                >
                   Back to Home
                 </Button>
               </div>
