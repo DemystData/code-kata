@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 const formSchema = z.object({
   email: z.string({ required_error: 'Email is required' }).email({ message: 'Invalid email address' }),
@@ -19,7 +20,12 @@ const formSchema = z.object({
 });
 
 export default function Login() {
+  const { data: session, status } = useSession();
   const router = useRouter();
+  if (session?.user) {
+    router.push('/');
+  }
+
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
@@ -39,7 +45,7 @@ export default function Login() {
         setAlertType('success');
         setAlertMessage('Login Successful');
         setTimeout(() => {
-          router.push('/user/buisnessinfo');
+          router.push('/user/dashboard');
         }, 5000);
       } else {
         setLoading(false);

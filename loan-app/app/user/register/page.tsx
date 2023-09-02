@@ -11,6 +11,7 @@ import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 const formSchema = z
   .object({
@@ -41,7 +42,13 @@ const formSchema = z
   });
 
 export default function Register() {
+  const { data: session, status } = useSession();
   const router = useRouter();
+
+  if (session?.user) {
+    router.push('/');
+  }
+
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
