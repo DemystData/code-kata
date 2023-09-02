@@ -15,14 +15,17 @@ const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email', placeholder: 'Enter your registered email' },
         password: { label: 'Password', type: 'Enter your password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
+        if (!email || !password) {
+          return null;
+        }
         const user = await prisma.user.findUnique({
           where: {
-            email,
+            email: email,
           },
         });
         if (!user) {
@@ -46,5 +49,3 @@ const authOptions: NextAuthOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
-
-// https://www.youtube.com/watch?v=b3pbgBmEGcU&ab_channel=BrettWestwood-SoftwareEngineer
