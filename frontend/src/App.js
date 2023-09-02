@@ -5,13 +5,26 @@ import { BrowserRouter,Route,Routes} from 'react-router-dom';
 import FormSucessPage from './FormSucessPage';
 import FormErrorPage from './FormErrorPage';
 import Review from './Review';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 
 function App() {
   const [formdata,setformdata]=useState([{}]);
   
   const[balancesheet,setbalancesheet]=useState([]);
   const [checkbox_value,setcheckbox_value]=useState(false);
+
+  useEffect(()=>{
+    if(checkbox_value==true && formdata[0].account_provider){
+    fetch(`https://effective-memory-rj96j9jx6vwhqwx-8080.app.github.dev/${formdata[0].account_provider}`)
+    .then(response=>response.json())
+    .then(data=>setbalancesheet(data))
+    .catch(error=>console.error(error))
+    }
+    else{
+        setbalancesheet([]);
+    }
+    
+},[checkbox_value,formdata[0].account_provider])
   return (
     <>
     <BrowserRouter>

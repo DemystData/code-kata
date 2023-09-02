@@ -1,5 +1,5 @@
 import "./App.css"
-import { useEffect, useState} from 'react';
+import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 const Form =(props)=>{
     const{formdata,setformdata,balancesheet,setbalancesheet,checkbox_value,setcheckbox_value}=props;
@@ -8,28 +8,15 @@ const Form =(props)=>{
     
     const enter_value=(e)=>{
         const {id,value} =e.target;
-        setformdata(form=>form.map((list,index)=>(index===0?{...list,[id]:value}:list)));
+        setformdata(form=>form.map((list,index)=>(index==0?{...list,[id]:value}:list)));
     }
-    const [input_disable,setinput_disable]=useState(true);
-
-    useEffect(()=>{
-        if(checkbox_value==true && formdata[0].account_provider){
-        fetch(`https://effective-memory-rj96j9jx6vwhqwx-8080.app.github.dev/${formdata[0].account_provider}`)
-        .then(response=>response.json())
-        .then(data=>setbalancesheet(data))
-        .catch(error=>console.error(error))
-        }
-        else{
-            setbalancesheet([]);
-        }
-        
-    },[checkbox_value,formdata[0].account_provider])
 
     const changeBalanceSheet=(e)=>{
         const {name,id,value}=e.target;
-        console.log(name,id,value);
-        setbalancesheet(bs=>bs.map((list,index)=>(index===id?({...list,[name]:value}):(list))))
+        setbalancesheet(bs=>bs.map((list,index)=>(index==id?{...list,[name]:value}:list)));
     }
+
+    const [input_disable,setinput_disable]=useState(true);
 
     const submitForm=(e)=>{
         e.preventDefault();
@@ -37,7 +24,7 @@ const Form =(props)=>{
     }
         const mobilernumber=(e)=>{
             var numbers = /^[0-9]+$/;
-            if(e.target.value.match(numbers)|| e.target.value.length===0){
+            if(e.target.value.match(numbers)|| e.target.value.length==0){
                 if(e.target.value.length<=10){
                 enter_value(e);
                 }
@@ -46,7 +33,7 @@ const Form =(props)=>{
 
         const year=(e)=>{
             var numbers = /^[0-9]+$/;
-            if(e.target.value.match(numbers)|| e.target.value.length===0){
+            if(e.target.value.match(numbers)|| e.target.value.length==0){
                 if(e.target.value.length<=4){
                 enter_value(e);
                 }
@@ -55,7 +42,7 @@ const Form =(props)=>{
 
         const loanamount=(e)=>{
             var numbers = /^[0-9]+$/;
-            if(e.target.value.match(numbers)|| e.target.value.length===0){
+            if(e.target.value.match(numbers)|| e.target.value.length==0){
                 enter_value(e);
             }
         }
@@ -159,7 +146,7 @@ return(
                 balancesheet.map((list,index)=>{
                     return(
                         <tr key={index}>
-                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={balancesheet[index].year} name={"year"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
+                            <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.year} name={"year"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
                             <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.month} name={"month"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
                             <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.profitOrLoss} name={"profitOrLoss"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
                             <td className='balance_sheet_data'><input className='balance_sheet_input' value={list.assetsValue} name={"assetsValue"} id={index} disabled={input_disable} onChange={(e)=>changeBalanceSheet(e)} required/></td>
