@@ -1,27 +1,67 @@
 import "./App.css"
 import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+
+/**
+ * Form.js is a react component that render the business loan application form
+ * @param {*} props - props is a object that contains formdata , setformdata,balancesheet,setbalancsheet,checkboc_value,setcheckbox_value
+ * @param {Array} `formdata`- formdata is state contains form field values and empty by default
+ * @parm {Array}'setformdata'- setformdata is a state that changed the value of formdata array when ever the value changes.
+ * @param {Array} `balancesheet`- balancesheet is state contains form field values and empty by default
+ * @param {Array} `setbalancesheet`- setbalancesheet is a state that changed the value of balacesheet array when ever the value changes. 
+ * @parem {checkbox_value} `checkbox_value` - checkbox_value is a state that has a value of form checkbox defualt value is false.
+ * @parm {setcheckbox_value}`setcheckbox_value`-The `setcheckbox_value` parameter is used to toggle the value of the checkbox_value between true and false.
+ * 
+ * @returns {JSX.Element}
+ * renders the react component form.
+ */
 const Form =(props)=>{
     const{formdata,setformdata,balancesheet,setbalancesheet,checkbox_value,setcheckbox_value}=props;
     const navigate = useNavigate();
     const select_option=['Xero','MYOB'];
-    
+    /**
+     * 
+     * @param {*} e - `e` - It carries the property values of the input field in the form data like id , name etc..,
+     * @param {String} `id`- id carries the form field name.
+     * @param  `value` - value carries the form input values.
+     * @returns changes the formdata array value coresponded to the id for the form. 
+     */
     const enter_value=(e)=>{
         const {id,value} =e.target;
         setformdata(form=>form.map((list,index)=>(index==0?{...list,[id]:value}:list)));
     }
-
+/**
+ * 
+ * @param {*} e - carries HTML properties
+ * @param {number} `id`- contains index of the array.
+ * @param  `value` - value carries the form input values. 
+ * @param {String} 'name' - name as value of propertie names in the array.
+ */
     const changeBalanceSheet=(e)=>{
         const {name,id,value}=e.target;
         setbalancesheet(bs=>bs.map((list,index)=>(index==id?{...list,[name]:value}:list)));
     }
 
     const [input_disable,setinput_disable]=useState(true);
-
+/**
+ * submitForm manages the form submission
+ * @function
+ * @param {*} e 
+ * @return {void}
+ * It navigate to the review path.
+ */
     const submitForm=(e)=>{
         e.preventDefault();
        navigate("/review");
     }
+    /**
+ * mobilenumber function validate the mobile number input field in html
+ * @function
+ * @param {*} e - HTML property of the field
+ * @retrun {void} 
+ * validate the mobile number input field when ever the changes happed.
+ * 
+ */
         const mobilernumber=(e)=>{
             var numbers = /^[0-9]+$/;
             if(e.target.value.match(numbers)|| e.target.value.length==0){
@@ -30,7 +70,14 @@ const Form =(props)=>{
                 }
             }
         }
-
+/**
+ * year function validate the year input field in html
+ * @function
+ * @param {*} e - HTML property of the field
+ * @retrun {void} 
+ * validate the year input field when ever the changes happed.
+ * 
+ */
         const year=(e)=>{
             var numbers = /^[0-9]+$/;
             if(e.target.value.match(numbers)|| e.target.value.length==0){
@@ -39,14 +86,28 @@ const Form =(props)=>{
                 }
             }
         }
-
+/**
+ * loanamount function validate the loan amount input field in html
+ * @function
+ * @param {*} e - HTML property of the field
+ * @retrun {void} 
+ * validate the loan amount input field when ever the changes happed.
+ * 
+ */
         const loanamount=(e)=>{
             var numbers = /^[0-9]+$/;
             if(e.target.value.match(numbers)|| e.target.value.length==0){
                 enter_value(e);
             }
         }
-
+/**
+ * removebutton function delete the object in balancesheet array
+ * @function
+ * @param {*} e - Html property of button.
+ * @param {number} 'id'- carries the index number for the balance sheet entry.
+ * @return{void}- alert message will be pops up and once it is confirm the purticular object will be deleted in the balancesheet array
+ *  
+ */
         const removebutton=(e)=>{
             e.preventDefault();
             const confirm=window.confirm("Want to delete this entry?")
@@ -56,7 +117,13 @@ const Form =(props)=>{
             setbalancesheet(arr);
             }
         }
-
+/**
+ * addbutton function addes the new object in balancesheet array
+ * @function
+ * @param {*} e - Html propertys of button
+ * @return{void}- alert message will be pops up and once it is confirm the new object will be added in the balancesheet array
+ *  
+ */
         const addbutton=(e)=>{
             e.preventDefault();
             const confirm=window.confirm("Want to add new entry?")

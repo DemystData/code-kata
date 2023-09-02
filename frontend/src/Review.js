@@ -1,8 +1,22 @@
 import './App.css';
 import { useNavigate } from 'react-router-dom';
+/**
+ * Review.js is a react component that display the form review page to the user.
+ * @param {*} props
+ * @param {Array} formdata `formdata`- formdata is state contains form field values and empty by default
+ * @param {Array} balancesheet `balancesheet`- balancesheet is state contains form field values and empty by default
+ * @returns {JSX.Element}-React Component 
+ */
 const Review=(props)=>{
-    const{formdata,balancesheet,setformdata,setbalancesheet}=props;
+    const{formdata,balancesheet}=props;
     const navigate=useNavigate();
+    /**
+     * submitform function fetch the data `decision_maker` address to save the form data.
+     * @function
+     * @param {*} e
+     * @returns{void}
+     * It is navigates the pages to either suces or failter  
+     */
     const submitForm=(e)=>{
         e.preventDefault();
         const senddata={formdata:formdata,balancesheet:balancesheet};

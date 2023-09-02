@@ -1,4 +1,9 @@
 import './App.css'
+/**
+ * Home_Header.js has a react component of the home page
+ * @returns {JSX.Element}
+ * It renders the JSX elements of the react component Home_Header.
+ */
 const Home_Header=()=>{
     return(
 <div className='first_page_header'>

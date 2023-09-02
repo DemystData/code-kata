@@ -1,5 +1,10 @@
 import './App.css'
 import {Link} from 'react-router-dom';
+/**
+ * Home_Section.js has a react component of the home page
+ * @returns {JSX.Element}
+ * It renders the JSX elements of the react component Home_Section.
+ */
 const Home_Section=()=>{
 return(
 <div className='first_page_section'>
