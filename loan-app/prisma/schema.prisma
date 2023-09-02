@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Account {
-  id                 String    @id @map("_id") @db.ObjectId @default(cuid())
+  id                 String    @id @map("_id") @db.ObjectId @default(auto())
   userId             String    @db.ObjectId
   providerType       String
   providerId         String
@@ -24,7 +24,7 @@ model Account {
 }
 
 model Session {
-  id           String   @id @map("_id") @db.ObjectId @default(cuid())
+  id           String   @id @map("_id") @db.ObjectId @default(auto())
   userId       String   @db.ObjectId
   expires      DateTime
   sessionToken String   @unique
@@ -35,7 +35,7 @@ model Session {
 }
 
 model User {
-  id            String    @id @map("_id") @db.ObjectId @default(cuid())
+  id            String    @id @map("_id") @db.ObjectId @default(auto())
   name          String
   email         String    @unique
   password      String    

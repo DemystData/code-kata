@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -20,7 +20,11 @@ export const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        const user = await prisma.getUserByEmail(email);
+        const user = await prisma.user.findUnique({
+          where: {
+            email,
+          },
+        });
         if (!user) {
           return null;
         }
@@ -35,10 +39,12 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET as string,
   debug: process.env.NODE_ENV === 'development',
 };
 
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+
+// https://www.youtube.com/watch?v=b3pbgBmEGcU&ab_channel=BrettWestwood-SoftwareEngineer
