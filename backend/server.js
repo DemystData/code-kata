@@ -147,19 +147,19 @@ else{
     pre_assessment=20;
 }
     request_decisionmaker=[{business_name:formdata[0].company_name,year_established:formdata[0].year_established,balancesheet:balancesheet,pre_assessment:pre_assessment}]
-  //console.log(JSON.stringify(request_decisionmaker, null, 2));
+ // console.log(JSON.stringify(request_decisionmaker, null, 2));
+  logger.info({
+    message:"Data received and processed to the given format",
+    status:res.statusCode,
+    headers:res.getHeaders(),
+});
   res.status(200).json(request_decisionmaker);
 }
 catch(error){
     logger.error({
-        message:"Error in /Xero",
+        message:"Error in /decision_maker",
         error:"Internal Server Error"
     })
-    logger.info({
-        message:"Data recived and processed to the given format",
-        status:res.statusCode,
-        headers:res.getHeaders(),
-    });
     res.status(500).json({error:"Internal Server Error"});
 }
 });
