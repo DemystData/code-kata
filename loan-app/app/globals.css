@@ -29,6 +29,9 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
+    --success: 108, 100%, 73%;
+    --success-foreground: 112, 100%, 73%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
@@ -61,6 +64,9 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
+    --success: 108, 100%, 73%;
+    --success-foreground: 112, 100%, 73%;
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -76,6 +82,14 @@
   }
 }
 
+.input {
+  @apply border border-slate-500 h-10 bg-gray-800 text-slate-100 py-2 px-2 rounded-sm;
+}
+
+.label {
+  @apply text-sm font-medium leading-none;
+}
+
 .gradient-text {
   background: linear-gradient(45deg, #f0c352, #f16c29);
   background-clip: text;
@@ -84,5 +98,5 @@
 }
 
 .hsl {
-  color: hsl(29, 94%, 64%);
+  color: hsl(108, 100%, 74%);
 }
