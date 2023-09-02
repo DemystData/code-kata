@@ -40,7 +40,7 @@ export default function Home() {
           <div className="flex flex-row gap-5 lg:items-center lg:justify-center">
             <Link href="/user/dashboard">
               <Button className="mt-6" size="lg">
-                Go to Dashboard
+                Dashboard
               </Button>
             </Link>
 

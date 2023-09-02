@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -41,6 +41,29 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
+  },
+  callbacks: {
+    async jwt({ token, user, session }) {
+      console.log('\n\n==================== JWT CALLBACK ===================\n', token, user, session);
+
+      if (user) {
+        return {
+          ...token,
+          id: user.id,
+        };
+      }
+      return token;
+    },
+    async session({ session, token, user }) {
+      console.log('\n\n==================== SESSION CALLBACK ===================\n', token, user, session);
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+        },
+      };
+    },
   },
   pages: {
     signIn: '/user/login',

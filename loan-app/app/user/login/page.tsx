@@ -44,9 +44,6 @@ export default function Login() {
         setShowAlert(true);
         setAlertType('success');
         setAlertMessage('Login Successful');
-        setTimeout(() => {
-          router.push('/user/dashboard');
-        }, 5000);
       } else {
         setLoading(false);
         setShowAlert(true);
