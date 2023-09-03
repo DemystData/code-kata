@@ -45,7 +45,7 @@ export default function Register() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  if (session?.user) {
+  if (status === 'authenticated') {
     router.push('/');
   }
 

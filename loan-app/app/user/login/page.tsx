@@ -22,7 +22,7 @@ const formSchema = z.object({
 export default function Login() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  if (session?.user) {
+  if (status === 'authenticated') {
     router.push('/');
   }
 
@@ -38,8 +38,6 @@ export default function Login() {
         ...values,
         redirect: false,
       });
-      console.log(res);
-
       if (!res?.error) {
         setShowAlert(true);
         setAlertType('success');
