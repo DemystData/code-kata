@@ -8,6 +8,16 @@
 
 }
 
+#submit{
+  width: 45%;
+  height: 70%;
+  border-radius: 0.25em;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
 .page{
   height: 100vh;
   width: 100%;

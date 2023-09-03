@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import "./LoanForm.css";
-// import LocationSearch from "./LocationSearch";
 import getBalanceSheet from "../../api/balanceSheet";
 
 const LoanForm = () => {
   const [modal, setModal] = useState(false);
   const [provider, setProvider] = useState("");
   const [accountsData, setAccountsData] = useState([]);
+  const [assessmentValue, setAssessmentValue] = useState(0);
+  const [final, setFinal] = useState(false);
+  const [profitValue, setProfitValue] = useState(0);
+  const [assetsValue, setAssetsValue] = useState(0);
+  const [submit, setSubmit] = useState(false);
+  let profit = 0;
+  let assets = 0;
+  let n = 0;
+
+  function handleSubmit(){
+    setSubmit(true);
+  }
 
   function handleProviderChange(e) {
     setProvider(e.target.value);
@@ -14,6 +25,10 @@ const LoanForm = () => {
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  const toggleFinal = () => {
+    setFinal(!final);
   };
 
   function handleBalanceSheet() {
@@ -28,7 +43,32 @@ const LoanForm = () => {
         setModal(false);
       });
 
-    console.log(accountsData);
+    accountsData.forEach((data) => {
+      console.log(data.profitOrLoss, data.assetsValue);
+      profit += parseInt(data.profitOrLoss);
+      assets += parseInt(data.assetsValue);
+      n++;
+    });
+    setProfitValue(profit);
+    setAssetsValue(assets);
+    console.log(assets, profit);
+    if (profit > 0 && assets / n > 0) {
+      setAssessmentValue(100);
+    } else if (profit > 0) {
+      setAssessmentValue(60);
+    }
+    console.log(assessmentValue);
+  }
+
+  function handleNext() {
+    profit = 0;
+    assets = 0;
+    n = 0;
+    handleBalanceSheet();
+    setModal(false);
+    setProfitValue(profit);
+    setAssetsValue(assets);
+    setFinal(true);
   }
   return (
     <div className="cover">
@@ -71,7 +111,9 @@ const LoanForm = () => {
         <div role="button" onClick={handleBalanceSheet}>
           BALANCE SHEET
         </div>
-        <div>NEXT</div>
+        <div role="button" onClick={handleNext}>
+          NEXT
+        </div>
       </div>
 
       {modal && (
@@ -102,6 +144,34 @@ const LoanForm = () => {
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>
+          </div>
+        </div>
+      )}
+
+      {final && (
+        <div className="modal">
+          <div onClick={toggleFinal} className="overlay"></div>
+          <div className="modal-content">
+            <h2>Final Review</h2>
+            <p>
+              Your Profit Value is {profitValue} and your assets value is {assetsValue}.
+              Based on your Data you are eligible for the {assessmentValue}% of your Loan Amount
+              Value.
+            </p>
+            <div role="button" id="submit" onClick={handleSubmit}>Submit</div>
+            <button className="close-modal" onClick={toggleFinal}>
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
+
+      {submit && (
+        <div className="modal">
+          <div onClick={toggleFinal} className="overlay"></div>
+          <div className="modal-content">
+            <h2>Thanks for Applying for the Loan.</h2>
+            <p>Our team will reach out to you shortly.</p>
           </div>
         </div>
       )}
