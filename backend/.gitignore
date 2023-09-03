@@ -3,3 +3,5 @@
 /.prettierignore
 
 /.prettierrc
+
+config/.env.dev
