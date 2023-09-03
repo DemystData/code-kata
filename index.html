@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Business Loan Application</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    fieldset {
+      margin-top: 20px; /* Adjust the top margin as needed */
+      margin-bottom: 20px; /* Adjust the bottom margin as needed */
+      padding: 10px; /* Adjust the padding as needed */
+      border: 1px solid #ccc; /* Add a border for better separation */
+    }
+
+    legend {
+      font-size: 20px; /* Increase the font size */
+      font-style: italic; /* Apply italic style */
+    }
+  </style>
+</head>
+<body>
+  <h1>Business Loan Application</h1>
+
+  <form id="applicationForm">
+    <fieldset>
+      <legend>Business Details</legend>
+      <label for="businessName">Business Name:</label>
+      <input type="text" id="businessName" required><br>
+
+      <label for="establishedYear">Year Established:</label>
+      <input type="number" id="establishedYear" required><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Loan Details</legend>
+      <label for="loanAmount">Loan Amount:</label>
+      <input type="number" id="loanAmount" required><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Accounting Provider Selection (Simulated)</legend>
+      <label for="accountingProvider">Accounting Provider:</label>
+      <select id="accountingProvider">
+        <option value="Xero">Xero</option>
+        <option value="MYOB">MYOB</option>
+        <!-- Add more options as needed -->
+      </select><br>
+    </fieldset>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <div id="applicationResult"></div>
+
+  <script src="frontend.js"></script>
+</body>
+</html>
