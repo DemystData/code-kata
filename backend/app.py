@@ -6,7 +6,7 @@ from Decision.decision import make_decision
 app = Flask(__name__)
 
 # Define the base URL for the ASP API
-ASP_BASE_URL = 'http://127.0.0.1:5001'  # Update this with the actual ASP API URL
+ASP_BASE_URL = 'http://127.0.0.1:5004'  # Update this with the actual ASP API URL
 
 @app.route('/api/initiate-application', methods=['POST'])
 def initiate_application():
@@ -27,7 +27,6 @@ def get_balance_sheet():
         accounting_provider = request.args.get('accountingProvider')
         year = request.args.get('year')
         print(accounting_provider)
-        print(f'http://127.0.0.1:5001/api/asp/balance-sheet?accountingProvider={accounting_provider}&year={year}')
         # Make a request to the ASP API's endpoint to get balance sheet data
         asp_response = requests.get(f'{ASP_BASE_URL}/api/asp/balance-sheet?accountingProvider={accounting_provider}&year={year}')
         
@@ -48,6 +47,6 @@ def decision_engine():
     return jsonify(decision_result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5003)
 
 

@@ -24,7 +24,7 @@ function App() {
   const handleInitiate = async() => {
     
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/initiate-application', {
+      const response = await fetch('http://127.0.0.1:5003/api/initiate-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function App() {
   // Fetch the Balance Sheet 
   const fetchBalanceSheet = async (year,accountingProvider) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/balance-sheet?year=${year}&accountingProvider=${accountingProvider}`);
+      const response = await fetch(`http://127.0.0.1:5003/api/balance-sheet?year=${year}&accountingProvider=${accountingProvider}`);
       const data = await response.json();
       setBalanceSheet(data.balanceSheet);
       setbalanceSheetfetched(true);
@@ -96,7 +96,7 @@ function App() {
   const handleSubmit = async () => {
     calculatePreAssessment();
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/decision-engine', {
+      const response = await fetch('http://127.0.0.1:5003/api/decision-engine', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
