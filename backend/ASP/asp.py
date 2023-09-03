@@ -4,6 +4,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Enable CORS for your app
 
+
+# Added a Dummy Data 
 balance_sheet_data = {
     "Xero": [
         {
