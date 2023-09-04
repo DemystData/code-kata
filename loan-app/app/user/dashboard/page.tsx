@@ -40,15 +40,16 @@ const formSchema = z.object({
 });
 
 export default function Dashboard() {
-  const { data: session, status } = useSession();
   const router = useRouter();
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [applicationData, setApplicationData] = useState(JSON.parse(localStorage.getItem('applicationData') || '{}'));
-  const [inputDisabled, setInputDisabled] = useState(!!applicationData);
+  const [applicationData, setApplicationData] = useState(
+    typeof window === 'undefined' ? {} : JSON.parse(localStorage.getItem('applicationData') || '{}')
+  );
+  const [inputDisabled, setInputDisabled] = useState(!(Object.keys(applicationData).length === 0));
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -104,8 +105,13 @@ export default function Dashboard() {
 
   return (
     <main className="flex min-h-screen flex-col p-6 md:p-12 bg-gradient-to-b from-slate-900 to-slate-800 justify-center lg:items-center">
-      <div className="text-white w-full lg:w-[30%]">
-        <h1 className="text-white text-3xl md:text-4xl font-semibold gradient-text">Enter Business Details</h1>
+      <div className="text-white w-full lg:w-[40%]">
+        <div className="md:flex md:flex-row-reverse md:justify-between">
+          <Button className="mb-4" variant={'secondary'} onClick={() => router.push('/')}>
+            Home
+          </Button>
+          <h1 className="text-white text-3xl md:text-4xl font-semibold gradient-text">Enter Business Details</h1>
+        </div>
         {showAlert ? (
           alertType === 'error' ? (
             <Alert hidden={!showAlert} className="my-3 flex justify-between" variant="destructive">
@@ -288,7 +294,7 @@ export default function Dashboard() {
                           className="input"
                           placeholder="Enter your required loan amount"
                           {...field}
-                          value={applicationData?.loanAmount}
+                          value={applicationData ? applicationData.loanAmount : field.value}
                         />
                       </FormControl>
                       <FormMessage />
@@ -296,7 +302,7 @@ export default function Dashboard() {
                   )}
                 />
               </div>
-              <div className="flex flex-col md:flex-row md:items-center gap-3">
+              <div className="flex flex-col md:flex-row md:items-center gap-2">
                 <Button
                   disabled={loading}
                   type="submit"
@@ -305,7 +311,9 @@ export default function Dashboard() {
                   {loading ? 'Requesting...' : 'Request Balance Sheet'}
                 </Button>
                 <Link href="/user/applicationReview">
-                  <Button className={`${!loading && inputDisabled ? '' : 'hidden'} mt-1`}>Review Application</Button>
+                  <Button className={`${!loading && inputDisabled ? '' : 'hidden'} mt-1 w-full`}>
+                    Review Application
+                  </Button>
                 </Link>
                 <Button
                   disabled={loading}
@@ -313,10 +321,12 @@ export default function Dashboard() {
                   className="mt-1"
                   onClick={(e) => {
                     e.preventDefault();
-                    router.push('/');
+                    setInputDisabled(false);
+                    localStorage.removeItem('applicationData');
+                    window.location.reload();
                   }}
                 >
-                  Back to Home
+                  Reset
                 </Button>
               </div>
             </form>

@@ -48,12 +48,13 @@ export default function Home() {
               variant="outline"
               className="mt-6"
               size="lg"
-              onClick={() =>
+              onClick={() => {
+                localStorage.removeItem('applicationData');
                 signOut({
                   callbackUrl: '/',
                   redirect: false,
-                })
-              }
+                });
+              }}
             >
               Logout
             </Button>

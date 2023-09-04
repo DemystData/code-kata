@@ -11,8 +11,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ data: 'Missing request body' }, { status: 400 });
   }
   const body = await request.json();
-  console.log(body);
-  const response = await fetch('http://localhost:8000/getBalanceSheet', {
+  const response = await fetch('https://accounting-server.vercel.app/getBalanceSheet', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

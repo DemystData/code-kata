@@ -5,36 +5,37 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Function to generate a random balance sheet for 12 months
-function generateRandomBalanceSheet() {
+function generateRandomBalanceSheet(body) {
   const balanceSheet = [];
   const currentYear = new Date().getFullYear();
+  const { yearEstablished } = body;
 
-  for (let month = 1; month <= 12; month++) {
-    const profitOrLoss = Math.floor(Math.random() * 100000) - 50000; // Random profit/loss between -50000 to 50000
-    const assetsValue = Math.floor(Math.random() * 100000); // Random assets value between 0 to 1,000,000
-
-    balanceSheet.push({
-      year: currentYear - 1,
-      month,
-      profitOrLoss,
-      assetsValue,
-    });
+  for (let year = currentYear - 1; year >= parseInt(yearEstablished); year--) {
+    for (let month = 1; month <= 12; month++) {
+      const profitOrLoss = Math.floor(Math.random() * 10000) - 5000;
+      const assetsValue = Math.floor(Math.random() * 1000000);
+      balanceSheet.push({
+        year,
+        month,
+        profitOrLoss,
+        assetsValue,
+      });
+    }
   }
-
   return balanceSheet;
 }
 
-// Define a route to generate a random balance sheet
 app.post('/getBalanceSheet', (req, res) => {
-  const randomBalanceSheet = generateRandomBalanceSheet();
+  const randomBalanceSheet = generateRandomBalanceSheet(req.body);
   res.json({ ...req.body, balanceSheet: randomBalanceSheet });
 });
 
-// Start the Express server
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

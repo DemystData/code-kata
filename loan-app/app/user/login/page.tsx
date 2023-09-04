@@ -71,7 +71,7 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen flex-col p-6 md:p-12 bg-gradient-to-b from-slate-900 to-slate-800 justify-center lg:items-center">
-      <div className="text-white w-full lg:w-[30%]">
+      <div className="text-white w-full lg:w-[40%]">
         <h1 className="text-white text-3xl md:text-4xl font-semibold gradient-text">Login to your account</h1>
         {alertType === 'error' ? (
           <Alert hidden={!showAlert} className="my-3 flex justify-between" variant="destructive">
