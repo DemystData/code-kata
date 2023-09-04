@@ -25,10 +25,10 @@ def initiate_application():
 def get_balance_sheet():
     try:
         accounting_provider = request.args.get('accountingProvider')
-        year = request.args.get('year')
+        company_name = request.args.get('company')
         print(accounting_provider)
         # Make a request to the ASP API's endpoint to get balance sheet data
-        asp_response = requests.get(f'{ASP_BASE_URL}/api/asp/balance-sheet?accountingProvider={accounting_provider}&year={year}')
+        asp_response = requests.get(f'{ASP_BASE_URL}/api/asp/balance-sheet?company={company_name.upper()}&accountingProvider=${accounting_provider}')
         
         if asp_response.status_code == 200:
             asp_data = asp_response.json()

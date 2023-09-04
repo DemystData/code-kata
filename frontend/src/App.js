@@ -59,9 +59,9 @@ function App() {
   };
 
   // Fetch the Balance Sheet 
-  const fetchBalanceSheet = async (year,accountingProvider) => {
+  const fetchBalanceSheet = async (company,accountingProvider) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5003/api/balance-sheet?year=${year}&accountingProvider=${accountingProvider}`);
+      const response = await fetch(`http://127.0.0.1:5003/api/balance-sheet?company=${company}&accountingProvider=${accountingProvider}`);
       const data = await response.json();
       setBalanceSheet(data.balanceSheet);
       setbalanceSheetfetched(true);
@@ -150,7 +150,7 @@ function App() {
       </div>
       </div>
       {/* Fetch balance sheet button */}
-      <button onClick={() => fetchBalanceSheet(yearEstablished,accountingProvider)}>Request Balance Sheet</button>
+      <button onClick={() => fetchBalanceSheet(businessName,accountingProvider)}>Request Balance Sheet</button>
       {/* Display fetched balance sheet */}
       <div>
         {balanceSheetfetched && (<h2>Balance Sheet</h2>)}
