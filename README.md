@@ -1,121 +1,63 @@
-# Exercise
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-The goal of the project is to build a simple business loan application system.
+## Getting Started
 
-The system consists of the following:
+Run `npm ci`
 
-- Frontend
-- Backend
+Then, run the development server:
 
-The backend would integrate with third-party providers such as:
-
-- Decision engine - This is where the final application will be
-submitted to present the outcome of the application.
-- Accounting software providers will provide a balance sheet for a selected business of the user.
-
-Below is a sequence diagram to help visually understand the flow.
-
-```mermaid
-
-sequenceDiagram
-  Actor User as User
-  participant FE as Frontend
-  participant BE as Backend
-  participant ASP as Accounting Software
-  participant DE as Decision Engine
-
-  User ->> FE: Start Application
-
-  FE ->> BE: Initiate Application
-  BE ->> FE: Initiate Complete
-
-  User ->> FE: Fill Business Details & Loan amount
-  User ->> FE: Select Accounting provider
-  User ->> FE: Request Balance Sheet
-  FE ->> BE: Fetch Balance Sheet
-  BE ->> ASP: Request Balance Sheet
-  ASP ->> BE: Return Balance Sheet
-  BE ->> FE: Return Details for Review
-
-  User --> FE: Review Complete
-  User ->> FE: Submit Application
-
-  FE ->> BE: Request outcome
-  BE ->> BE: Apply Rules to summarise application
-  BE ->> DE: Request Decision
-  DE ->> BE: Returns outcome
-
-  BE ->> FE: Application Result
-  FE ->> User: Final Outcome
-
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-Assumptions:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- You may choose from the following language: Javascript, Typescript, Python, Golang / HTML, CSS.
-- For frontend, you could use a framework such as React / Vue, though basic HTML is also acceptable.
-- The accounting software and decision engine are already implemented. The backend should provide a simulation of the above.
-- The frontend can be very basic.
-- The accounting provider option on frontend would include Xero, MYOB and more in future.
-- A sample balance sheet received from Accounting provider:
+## About the Application - Loan Shark
 
-```json
+Upon running the application you will land on the homepage of the application. Here you can sign in using your google account.
+The app uses google-auth to get you logged in. Logging in with your email will create an entry corresponding to your email ID in the "users" collection on MongoDB Atlas. The database connection is achieved using the "mongoose" library using database models (schemas).
 
-sheet = [
-    {
-        "year": 2020,
-        "month": 12,
-        "profitOrLoss": 250000,
-        "assetsValue": 1234
-    },
-    {
-        "year": 2020,
-        "month": 11,
-        "profitOrLoss": 1150,
-        "assetsValue": 5789
-    },
-    {
-        "year": 2020,
-        "month": 10,
-        "profitOrLoss": 2500,
-        "assetsValue": 22345
-    },
-    {
-        "year": 2020,
-        "month": 9,
-        "profitOrLoss": -187000,
-        "assetsValue": 223452
-    }
-]
-```
+Upon log in you will have a button to apply for a loan. Upon applying for the loan you will be greeted with the page to request the balance sheet of your business from your accounting provider.
 
-## Rules to be applied before sending to Decision Engine
+As the accounting service was meant to be mocked to return a balance sheet based on the business name and accounting provider, I have stored some documents on MongoDB Atlas, which will simulate the fetching of balance sheet based on the values that you will fill in the form. This process is dynamic and will fetch the data (balance sheet) from Atlas corresponding to the business name and the accounting.
 
-- If a business has made a profit in the last 12 months. The final value to be sent with a field `"preAssessment": "60"` which means the Loan is favored to be approved 60% of the requested value.
-If the average asset value across 12 months is greater than the loan amount then `"preAssessment": "100"`
-- Default value to be used `20`
+I have stored sample balance sheet data in MongoDB Atlas.
 
-## The Final output to be sent to the decision engine would contain minimum details such as
+Try the balance sheet request with the following parameters to test all the 3 cases for "preAssessment" value -
 
-- Business Details such as:
-  - Name
-  - Year established
-  - Summary of Profit or loss by the year
-- preAssessment value as per the rules
+`preAssesmentValue: 100`
 
-## Judging Criteria
+Business Name: Fantasy Premier League
 
-- Engineering principles & standards
-- System extensibility & Scalability
-- Testability
-- Brevity and Simplicity
+Loan Amount: 1000 (less than the average Asset Value)
 
-## Bonus Points
+Accounting Provider: AccuFunds
 
-- Docker
+`preAssesmentValue: 60`
 
-## FAQ
+Business Name: Fantasy Premier League
 
-### What is the time-limit on exercise ?
+Loan Amount: 1000000000 (greater than the average Asset Value, but the business is profitable over the last 12 months)
 
-There is none, ensure you submit your best attempt and as soon as you possibly can.
+Accounting Provider: AccuFunds
+
+`preAssesmentValue: 20` 
+
+Business Name: SportsPulse Media
+
+Loan Amount: 1000000000 (greater than the average Asset Value and the business is not profitable over the last 12 months)
+
+Accounting Provider: Apex Financial Services
+
+After requesting the balance sheet, the user will recieve the data from the balance sheet in a tabular form. User can then review the data and submit application.
+
+Requesting data with any other business names and accounting provider combination will display a balance sheet not found with a link to go back to the balance sheet request form page.
+
+After submitting the loan application, the user will have a summary of his application which displays fields Business Name, Total Profit/Loss, Requested Loan Amount, Pre-Approved percentage and Pre-Approved amount.
+
+Thank You!!
+
