@@ -14,21 +14,26 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Objectives
+* Building a loan application software which accepts loan application details from company.
+* Accept company's details and call api to fetch Balance Sheet from chosen Accounting provider.
+* Calculate PreAssesment value from profit and AssetValue of company and call api to send it along with necessary details to decisionEngine for final assesment.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Implementation
+* Used Next.js to implement both the frontend and backend of the project.
+* Displayed a form in home page to accept Company Details and Account Provider of choice.
+* Made a api call to api/balanceSheets to retrieve balance sheet of the entered company.
+* The Balance Sheet is displayed on the page for the user to see along with profitorLoss of the company in the past year and Asset value. The page is rendered as per the selected accounting provider with it's name.
+* The preAssesment value is calculated and displayed on the page along with a button to submit the details and Apply for loan.
+* If the required details are succesfully sent to the API, then a success notification is observed at the bottom of the page.
 
-## Learn More
+## Assumptions
+* While I have assumed the Accounting Software and Decision Engine are implemented, but I have created sample APIs for both to simulate the working of those 2 APIs.
+* The Accounting Software simulation is retrieving data from data/BalanceSheets.json file which stores sample balance sheet data of companies.
+* I could have dockerised the app by creating a production build using npm run build and docker build -t nextjs-docker and docker run -p 3000:3000 nextjs-docker.
+But I abstained from it since then I had to retrieve data from js object instead of directly from a JSON file.
+* I have kept the frontend UI at minimum and not looked to make it very asthetic.
+* Haven't added any Database or full-fledged functionality for backend APIs and just done enough to simulate the API calls as per problem statement to maintain brevity and simplicity.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Recording of running app:
+https://www.loom.com/share/1401b47b05494e65ba19bd4589b5bea0?sid=65c20637-2da6-465e-9da2-67dcba7c2711
