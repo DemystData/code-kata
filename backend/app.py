@@ -34,7 +34,7 @@ def get_balance_sheet():
             asp_data = asp_response.json()
             return jsonify({'balanceSheet': asp_data['balanceSheet']})
         else:
-            return jsonify({'error': 'Failed to fetch balance sheet data from ASP'}), asp_response.status_code
+            return jsonify({'error': 'Failed to fetch balance sheet data from ASP check the business Name'}), asp_response.status_code
         
     except Exception as e:
         print("Error:", str(e))

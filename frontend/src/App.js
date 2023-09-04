@@ -12,6 +12,7 @@ function App() {
   const [yearEstablished, setYearEstablished] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
   const [decisionResult, setDecisionResult] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [accountingProvider, setAccountingProvider] = useState('Xero');
   const [balanceSheet, setBalanceSheet] = useState([]);
   const [preAssessment, setPreAssessment] = useState(20);
@@ -59,16 +60,45 @@ function App() {
   };
 
   // Fetch the Balance Sheet 
-  const fetchBalanceSheet = async (company,accountingProvider) => {
+  const fetchBalanceSheet = async (company, accountingProvider) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5003/api/balance-sheet?company=${company}&accountingProvider=${accountingProvider}`);
-      const data = await response.json();
-      setBalanceSheet(data.balanceSheet);
-      setbalanceSheetfetched(true);
+      const response = await fetch(
+        `http://127.0.0.1:5003/api/balance-sheet?company=${company}&accountingProvider=${accountingProvider}`
+      );
+      
+      if (response.status === 200) {
+        const data = await response.json();
+        setBalanceSheet(data.balanceSheet);
+        setbalanceSheetfetched(true);
+        // Clear any previous error message
+        setErrorMessage(null);
+      } else if (response.status === 404) {
+        // Handle business not found error
+        const errorData = await response.json();
+        console.error('Business not found error:', errorData.error);
+  
+        // Set the error message state
+        setErrorMessage(errorData.error);
+  
+        // Clear the balance sheet and any previous error message
+        setBalanceSheet([]);
+      } else {
+        // Handle other error cases
+        console.error('Error fetching balance sheet:', response.statusText);
+        // Set the error message state
+        setErrorMessage(`Error: ${response.statusText}`);
+        // Clear the balance sheet
+        setBalanceSheet([]);
+      }
     } catch (error) {
       console.error('Error fetching balance sheet:', error);
+      // Set the error message state
+      setErrorMessage(`Error: ${error.message}`);
+      // Clear the balance sheet
+      setBalanceSheet([]);
     }
   };
+  
 
   // Function to calculate preAssessment based on rules
   const calculatePreAssessment = () => {
@@ -153,6 +183,7 @@ function App() {
       <button onClick={() => fetchBalanceSheet(businessName,accountingProvider)}>Request Balance Sheet</button>
       {/* Display fetched balance sheet */}
       <div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
         {balanceSheetfetched && (<h2>Balance Sheet</h2>)}
         <table id="data-table">
             {balanceSheetfetched && (<thead>
