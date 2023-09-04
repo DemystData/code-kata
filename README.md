@@ -1,121 +1,39 @@
-# Exercise
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-The goal of the project is to build a simple business loan application system.
+## Getting Started
 
-The system consists of the following:
+First, run the development server:
 
-- Frontend
-- Backend
-
-The backend would integrate with third-party providers such as:
-
-- Decision engine - This is where the final application will be
-submitted to present the outcome of the application.
-- Accounting software providers will provide a balance sheet for a selected business of the user.
-
-Below is a sequence diagram to help visually understand the flow.
-
-```mermaid
-
-sequenceDiagram
-  Actor User as User
-  participant FE as Frontend
-  participant BE as Backend
-  participant ASP as Accounting Software
-  participant DE as Decision Engine
-
-  User ->> FE: Start Application
-
-  FE ->> BE: Initiate Application
-  BE ->> FE: Initiate Complete
-
-  User ->> FE: Fill Business Details & Loan amount
-  User ->> FE: Select Accounting provider
-  User ->> FE: Request Balance Sheet
-  FE ->> BE: Fetch Balance Sheet
-  BE ->> ASP: Request Balance Sheet
-  ASP ->> BE: Return Balance Sheet
-  BE ->> FE: Return Details for Review
-
-  User --> FE: Review Complete
-  User ->> FE: Submit Application
-
-  FE ->> BE: Request outcome
-  BE ->> BE: Apply Rules to summarise application
-  BE ->> DE: Request Decision
-  DE ->> BE: Returns outcome
-
-  BE ->> FE: Application Result
-  FE ->> User: Final Outcome
-
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-Assumptions:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- You may choose from the following language: Javascript, Typescript, Python, Golang / HTML, CSS.
-- For frontend, you could use a framework such as React / Vue, though basic HTML is also acceptable.
-- The accounting software and decision engine are already implemented. The backend should provide a simulation of the above.
-- The frontend can be very basic.
-- The accounting provider option on frontend would include Xero, MYOB and more in future.
-- A sample balance sheet received from Accounting provider:
+## Project Objectives
+* Building a loan application software which accepts loan application details from company.
+* Accept company's details and call api to fetch Balance Sheet from chosen Accounting provider.
+* Calculate PreAssesment value from profit and AssetValue of company and call api to send it along with necessary details to decisionEngine for final assesment.
 
-```json
+## Project Implementation
+* Used Next.js to implement both the frontend and backend of the project.
+* Displayed a form in home page to accept Company Details and Account Provider of choice.
+* Made a api call to api/balanceSheets to retrieve balance sheet of the entered company.
+* The Balance Sheet is displayed on the page for the user to see along with profitorLoss of the company in the past year and Asset value. The page is rendered as per the selected accounting provider with it's name.
+* The preAssesment value is calculated and displayed on the page along with a button to submit the details and Apply for loan.
+* If the required details are succesfully sent to the API, then a success notification is observed at the bottom of the page.
 
-sheet = [
-    {
-        "year": 2020,
-        "month": 12,
-        "profitOrLoss": 250000,
-        "assetsValue": 1234
-    },
-    {
-        "year": 2020,
-        "month": 11,
-        "profitOrLoss": 1150,
-        "assetsValue": 5789
-    },
-    {
-        "year": 2020,
-        "month": 10,
-        "profitOrLoss": 2500,
-        "assetsValue": 22345
-    },
-    {
-        "year": 2020,
-        "month": 9,
-        "profitOrLoss": -187000,
-        "assetsValue": 223452
-    }
-]
-```
+## Assumptions
+* While I have assumed the Accounting Software and Decision Engine are implemented, but I have created sample APIs for both to simulate the working of those 2 APIs.
+* The Accounting Software simulation is retrieving data from data/BalanceSheets.json file which stores sample balance sheet data of companies.
+* I could have dockerised the app by creating a production build using npm run build and docker build -t nextjs-docker and docker run -p 3000:3000 nextjs-docker.
+But I abstained from it since then I had to retrieve data from js object instead of directly from a JSON file.
+* I have kept the frontend UI at minimum and not looked to make it very asthetic.
+* Haven't added any Database or full-fledged functionality for backend APIs and just done enough to simulate the API calls as per problem statement to maintain brevity and simplicity.
 
-## Rules to be applied before sending to Decision Engine
-
-- If a business has made a profit in the last 12 months. The final value to be sent with a field `"preAssessment": "60"` which means the Loan is favored to be approved 60% of the requested value.
-If the average asset value across 12 months is greater than the loan amount then `"preAssessment": "100"`
-- Default value to be used `20`
-
-## The Final output to be sent to the decision engine would contain minimum details such as
-
-- Business Details such as:
-  - Name
-  - Year established
-  - Summary of Profit or loss by the year
-- preAssessment value as per the rules
-
-## Judging Criteria
-
-- Engineering principles & standards
-- System extensibility & Scalability
-- Testability
-- Brevity and Simplicity
-
-## Bonus Points
-
-- Docker
-
-## FAQ
-
-### What is the time-limit on exercise ?
-
-There is none, ensure you submit your best attempt and as soon as you possibly can.
+Recording of running app:
+https://www.loom.com/share/1401b47b05494e65ba19bd4589b5bea0?sid=65c20637-2da6-465e-9da2-67dcba7c2711
