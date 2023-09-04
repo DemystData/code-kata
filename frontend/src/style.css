@@ -1,0 +1,94 @@
+/* Apply global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Apply specific styles for outcome section */
+  .outcome {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Style the balance sheet and outcome sections */
+  .outcome h2 {
+    font-size: 24px;
+    margin-top: 0;
+  }
+  
+  .outcome p {
+    margin-bottom: 10px;
+  }
+  
+  .outcome h3 {
+    font-size: 20px;
+  }
+  
+  /* Style the preAssessment value */
+  .pre-assessment {
+    font-weight: bold;
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  /* Style success and danger messages */
+  .success-message {
+    color: #28a745;
+  }
+  
+  .danger-message {
+    color: #dc3545;
+  }
+  
