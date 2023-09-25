@@ -119,3 +119,7 @@ If the average asset value across 12 months is greater than the loan amount then
 ### What is the time-limit on exercise ?
 
 There is none, ensure you submit your best attempt and as soon as you possibly can.
+
+### How to submit ?
+
+Submit a GitHub / Bitbucket repo for review. No ZIP files!
