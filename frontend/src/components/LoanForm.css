@@ -1,0 +1,23 @@
+/* .container{
+    border: 2px solid red;
+    display: flex;
+    width: 70vw;
+    flex-direction: column;
+    min-height: 70vh;
+    max-height: 100vh;
+}
+
+h1{
+    text-align: center;
+}
+
+.business-container{
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.finance-container{
+    border: 2px solid yellow;
+} */
