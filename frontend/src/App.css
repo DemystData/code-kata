@@ -1,0 +1,214 @@
+.first_page{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+}
+
+.first_page_header{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top:0;
+    background-color: #C5CBE3;
+    box-Shadow:2px 4px 2px 2px rgb(0,0,0,0.5);
+}
+
+.first_page_footer{
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  background-color: #C5CBE3;
+  box-Shadow:2px 2px 8px 2px rgb(0,0,0,1);
+}
+
+.first_page_section{
+position:fixed;
+top:20%;
+height: 70%;
+width: 100%;
+background-color: #f8f6f3;
+}
+
+.form_body{
+  width: 50%;
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-bottom: 5%;
+  border-radius: 25px;
+  padding-bottom: 50px;
+  box-Shadow:0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+.form_select{
+  width: 100%;
+  height: 25px;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  margin-top: 10px;
+  
+}
+
+.form_label{
+  margin-Left:10px;
+  margin-right: 10px;
+  padding: 15px 0;
+  width: 96%;
+}
+
+.form_input{
+  width: 100%;
+  height: 25px;
+  font-size: 15px;
+  outline: none;
+  border:none;
+  border-bottom: 1px solid black;
+  margin-top: 10px;
+}
+
+
+
+.form_checkbox{
+  margin-top: 10px;
+  margin-left: 30px;
+  width: 25px;
+  height: 25px;
+}
+
+.red_star{
+  color: red;
+}
+
+.balance_sheet_table{
+  border-Collapse:collapse;
+  margin-Left:5%;
+  margin-right: 5%;
+  margin-Top:5%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.balance_sheet_data{
+  padding:10px 0;
+  width:22.5%;
+}
+.balance_sheet_input{
+  width:80%;
+  margin:0 5px;
+}
+.balance_sheet_table_review{
+  border-Collapse:collapse;
+  margin-Left:5%;
+  margin-right: 5%;
+  margin-Top:5%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.balance_sheet_data_review{
+  text-align: center;
+}
+.table_button{
+  width:50px;
+  float: right;
+  background-color: white;
+  border: white;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.red{
+  border: 2px solid red;
+  
+}
+.grey{
+  border: 2px solid grey;
+  
+}
+
+.response_body{
+  width: 50%;
+  position: absolute;
+  top:0;
+  margin-left: 25%;
+  margin-bottom: 5%;
+  border-radius: 0 0 25px 25px;
+  padding-bottom: 20px;
+  box-Shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color:#0C4EA3;
+}
+
+.remove_button{
+border-radius: 10px;
+color:rgb(255, 0, 0);
+font-weight: bold;
+
+}
+.add_button{
+border-radius: 20px;
+color:rgb(0, 87, 248);
+font-size: 20px;
+font-weight: bold;
+margin-left: 50%;
+margin-bottom: 2%;
+}
+
+.balance_sheet_remove{
+  padding:5px 0;
+  width:3%;
+}
+.back_button{
+  margin-Left:10%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.review_button{
+  margin-left: 42%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.submit_button{
+  float: right;
+  margin-right: 10%;
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(2, 126, 43);
+  color: white;
+  border:none;
+  border-radius: 25px;
+}
+
+.submit_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.review_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.back_button:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
