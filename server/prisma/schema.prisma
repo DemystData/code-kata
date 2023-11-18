@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model company{
+  company_id Int @id @default(autoincrement())
+  company_name String
+  balance_sheet balance_sheet[]
+}
+
+model balance_sheet{
+  id Int @id @default(autoincrement())
+  company_id Int
+  company_name company @relation(fields: [company_id], references: [company_id])
+  year Int
+  month Int
+  profitOrLoss Int
+  assetsValue Int
+}
