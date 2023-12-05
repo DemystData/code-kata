@@ -2,7 +2,11 @@
 
 The goal of the project is to build a command line tool.
 
-Using Scala (and SBT), write a command line tool that consumes the API at <https://api.ipify.org/?format=json> and returns just the IP address part of it.
+Using Go, write a command line tool that consumes the first `10` `even` numbered TODO's in most performant way.
+
+- TODO at index 1 can be accessed at: <https://jsonplaceholder.typicode.com/todos/1>
+
+- TODO at index 2 can be accessed at: <https://jsonplaceholder.typicode.com/todos/2>
 
 Ensure you are submitting the code along with cli.
 
@@ -16,7 +20,6 @@ Ensure you are submitting the code along with cli.
 ## Bonus Points
 
 - Docker
-- Using an effect system like ZIO
 
 ## FAQ
 
