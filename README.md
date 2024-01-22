@@ -1,6 +1,6 @@
 # Exercise
 
-The goal of the project is to build a simple business loan application system.
+The goal of the project is to build a simple business loan application.
 
 The system consists of the following:
 
