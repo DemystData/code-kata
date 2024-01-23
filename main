@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require_relative 'app/todo_retriever'
+require_relative 'app/todo_view'
+
+class Main
+  def initialize
+    @todo_retriever = TodoRetriever.new
+    @options = { max_todos: 20 }
+  end
+
+  def parse_options
+    OptionParser.new do |opts|
+      opts.banner = "Usage: ruby main.rb [options]"
+      opts.on("-n", "--max-todos=N", Integer, "Maximum number of TODOs (default: 20)") do |n|
+        @options[:max_todos] = n
+      end
+    end.parse!
+  end
+
+  def fetch_parallel(ids)
+    threads = ids.map do |id|
+      Thread.new do
+        begin
+          [id, @todo_retriever.fetch(id)]
+        rescue SocketError => e
+          [id, { 'error' => "Failed to connect: #{e.message}" }]
+        end
+      end
+    end
+
+    threads.map(&:join).map(&:value).to_h
+  end
+
+  def run
+    parse_options
+    todo_ids = (1..@options[:max_todos]).map { |i| i * 2 }
+    todos = fetch_parallel(todo_ids)
+    todo_ids.each do |id|
+      begin
+        if todos[id]['error']
+          puts "Error for TODO ##{id}: #{todos[id]['error']}"
+        else
+          TodoView.show_details(id, todos[id])
+        end
+      rescue StandardError => e
+        puts e.message
+      end
+    end
+  end
+end
+
+Main.new.run
