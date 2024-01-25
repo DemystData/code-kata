@@ -15,7 +15,7 @@ const cb = vi.fn();
 it("return with status code 404", async () => {
   const data = await handler(event(randomUUID(), {}), ctx, cb);
 
-  expect(data).toEqual({ statusCode: 200, body: [] });
+  expect(data).toEqual({ statusCode: 200, body: JSON.stringify({ assets:[] }) });
 });
 
 it("gets the customer data", async () => {
