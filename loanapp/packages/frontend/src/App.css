@@ -1,0 +1,11 @@
+
+.active-link {
+  color: blue !important;
+}
+.spacer {
+  padding-right: 2% !important;
+}
+.alignElements{
+  display: flex !important;;
+  align-items: center !important;
+}

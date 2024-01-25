@@ -1,0 +1,19 @@
+{
+  "name": "@backend/functions",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.124",
+    "@types/node": "^20.8.6",
+    "sst": "^2.29.2",
+    "vite-tsconfig-paths": "4.2.1",
+    "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1542.0"
+  }
+}

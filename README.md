@@ -1,10 +1,13 @@
+### Added readme in loanapp/   and loanapp/packages/frontend and loanapp/packages/functions follow instructions to get started 
+
+
 # Exercise
 
 The goal of the project is to build a simple business loan application system.
 
 The system consists of the following:
 
-- Frontend
+- Frontend 
 - Backend
 
 The backend would integrate with third-party providers such as:
