@@ -5,10 +5,6 @@ import { createTable } from "../test/table";
 import { handler as create } from "./initiate";
 import { handler as update } from "./update";
 
-beforeAll(() => {
-  createTable("loan");
-});
-
 const ctx = {} as any;
 const cb = vi.fn();
 

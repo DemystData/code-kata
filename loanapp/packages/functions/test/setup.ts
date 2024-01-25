@@ -1,4 +1,10 @@
 import { APIGatewayProxyEventV2 } from "aws-lambda";
+import { beforeAll } from "vitest";
+import { createTable } from "./table";
+
+beforeAll(() => {
+  createTable("loan");
+});
 
 process.env = {
   ...process.env,
