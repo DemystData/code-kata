@@ -25,4 +25,5 @@ module.exports = {
     semi: ["error", "always"],
     "no-console": "error",
   },
+  ignorePatterns: ["package-lock.json", "package.json"],
 };

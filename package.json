@@ -4,6 +4,7 @@
   "description": "The TodoDataService service fetches and transforms TODO items from an external API into objects, providing data access functionality for TODO-related operations",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index",
     "test": "npm run test",
     "lint": "eslint .",
     "prepare": "husky install"
@@ -12,8 +13,7 @@
     "*.{js,jsx,ts,tsx,json}": [
       "eslint --fix",
       "prettier --write"
-    ],
-    "*.js": "eslint --cache --fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "axios": "^1.6.7"
   }
 }
