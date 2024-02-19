@@ -1,0 +1,23 @@
+{
+  "name": "todo-data-service",
+  "version": "1.0.0",
+  "description": "The TodoDataService service fetches and transforms TODO items from an external API into objects, providing data access functionality for TODO-related operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajasekark54/code-kata.git#feature"
+  },
+  "keywords": [
+    "NodeTodoCLI",
+    "TodoAPIClient"
+  ],
+  "author": "Rajasekar Kannan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajasekark54/code-kata/issues"
+  },
+  "homepage": "https://github.com/rajasekark54/code-kata/tree/feature#readme"
+}
