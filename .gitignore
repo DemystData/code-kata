@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# production
+/build
+/dist
+
+# misc
+/.DS_Store
+
+# environment
+/.env
+
+# IDE files
+.idea
+.vscode
+.eslintcache
