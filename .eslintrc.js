@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
+    jest: true,
   },
   extends: ["eslint:recommended", "plugin:node/recommended", "prettier"],
   overrides: [
@@ -26,4 +27,5 @@ module.exports = {
     "no-console": "error",
   },
   ignorePatterns: ["package-lock.json", "package.json"],
+  plugins: ["jest"],
 };

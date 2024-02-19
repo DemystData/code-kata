@@ -5,17 +5,16 @@ class TodoService {
   async fetchTodoItem(index) {
     try {
       const url = `${TODO_BASE_URL}/${index}`;
-      const todo = await request("GET", url);
-      return todo;
+      return await request("GET", url);
     } catch (error) {
-      throw new Error("Error fetching todo:", error);
+      throw new Error("Error fetching todo", error);
     }
   }
 
   async fetchEvenTodos(limit) {
     const evenTodos = [];
-    let count = 0;
     const evenVal = 2;
+    let count = 0;
     let evenIndex = evenVal;
 
     try {
@@ -31,7 +30,7 @@ class TodoService {
         completed: todo.completed,
       }));
     } catch (error) {
-      throw new Error("Error fetching even todos:", error);
+      throw new Error("Error fetching even todos", error);
     }
   }
 }
