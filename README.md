@@ -1,3 +1,31 @@
+# Todo-data-service
+
+The TodoDataService service fetches and transforms TODO items from an external API into objects, providing data access functionality for TODO-related operations.
+
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+- Docker Desktop
+
+### Installation
+
+1. Install Docker Desktop on your local machine.
+2. Clone the repository.
+   ```sh
+   git clone https://github.com/yourusername/yourrepository.git
+   ```
+3. Navigate to the project directory.
+   ```sh
+   cd code-kata
+   ```
+4. Run the following command to start the exercise.
+   ```sh
+   docker-compose up
+   ```
+
 # Exercise
 
 The goal of the project is to build a command line tool.
