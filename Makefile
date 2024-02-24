@@ -28,7 +28,7 @@ run-rust: build-rust
 		docker run --rm -i demyst-code-kata-rust -f json < todos.json;\
 	fi
 
-run: build run-go run-rust
+run: run-go run-rust
 
 benchmark: build
 	time docker run --rm -i demyst-code-kata-go < todos.csv
