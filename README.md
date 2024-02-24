@@ -1,3 +1,8 @@
+# Detail
+
+This is the solution for given problem. I have used NodeJS for solving problem by using it's Express Framework. For Test Cases, I have used JEST framework. All static data is stored in its .ENV file
+
+
 # Exercise
 
 The goal of the project is to build a command line tool.
