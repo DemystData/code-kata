@@ -4,6 +4,7 @@ use serde::Deserialize;
 use crate::{Args, Format};
 
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
+#[serde(rename_all = "camelCase")]
 pub struct Todo {
     pub id: u16,
 

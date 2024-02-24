@@ -10,7 +10,7 @@ import (
 
 type Todo struct {
 	Id        int16  `csv:"id" json:"id"`
-	UserId    int16  `csv:"user_id" json:"user_id"`
+	UserId    int16  `csv:"userId" json:"userId"`
 	Title     string `csv:"title" json:"title"`
 	Completed bool   `csv:"completed" json:"completed"`
 }
