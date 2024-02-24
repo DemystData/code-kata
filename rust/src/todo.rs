@@ -54,7 +54,7 @@ mod tests {
     #[test]
     fn test_parse_csv() -> Result<()> {
         let input =
-            "1,1,\"delectus aut autem\",false\n2,1,\"quis ut nam facilis et officia qui\",true\n";
+            "id,userId,title,completed\n1,1,\"delectus aut autem\",false\n2,1,\"quis ut nam facilis et officia qui\",true\n";
         let args = Args {
             format: Format::Csv,
             limit: 10,
