@@ -4,7 +4,6 @@ use serde::Deserialize;
 use crate::{Args, Format};
 
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
-#[serde(rename_all = "camelCase")]
 pub struct Todo {
     pub id: u16,
 
@@ -21,7 +20,7 @@ impl Todo {
             Format::Csv => {
                 let mut ts = vec![];
                 let mut rdr = csv::ReaderBuilder::new()
-                    .has_headers(false)
+                    .has_headers(true)
                     .from_reader(std::io::Cursor::new(input));
                 for result in rdr.deserialize() {
                     let todo: Todo = match result {
