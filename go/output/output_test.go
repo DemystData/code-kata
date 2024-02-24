@@ -62,7 +62,7 @@ func TestOutputString(t *testing.T) {
 			expected: "title,completed\na,false\nb,true\nc,false\nd,true\n",
 		},
 		{
-			// Not Even
+			// Error
 			actual: second(String(todos, arg.Args{
 				Format: "ASD",
 				Limit:  10,
