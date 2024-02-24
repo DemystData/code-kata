@@ -14,7 +14,7 @@ const getEvenTodoList = (limit = 20) => {
         try {
             for(count = 0; count < limit; count++){
                 index += step;
-                const todo = await filterEvenTodoList(index);
+                const todo = await fetchTodoList(index);
                 todoList.push(todo);
             }
             Promise.all(todoList).then((res) =>{
@@ -36,7 +36,7 @@ const getEvenTodoList = (limit = 20) => {
  * @param {*} index 
  * @returns 
  */
-async function filterEvenTodoList(index=1) {
+async function fetchTodoList(index=1) {
     const todo = await HttpService.request(`${APP_DATA_URL}/${index}`);
     return todo
 }
