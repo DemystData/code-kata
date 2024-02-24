@@ -13,8 +13,14 @@ const todoController = new TodoController();
  */
 app.get('/', async (req, res) => {
     const count = req && req.query && req.query.count? req.query.count: DEFAULT_LISTCOUNT; // if user want to list count in specific number or it will fetch default number
-    const data = await todoController.printEvenList(count);
-    res.send(data)
+    console.log('Start time', new Date());
+    const response = await todoController.fetchEvenTodoList(count);
+    if(response && response.success){
+      res.status(200).send(response.data)
+    } else {
+      res.status(500).send(response);
+    }
+    console.log('End time', new Date());
 })
 
 app.listen(port, () => {
