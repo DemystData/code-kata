@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-```go
+```sh
 $ go build && ./demyst-code-kata -h
 A command line tool that consumes the first 'limit', 'even' numbered TODO's in most performant way and output the 'title' and whether it's 'completed' or not
 
@@ -36,7 +36,7 @@ $ go build && ./demyst-code-kata -f json < todos.json | jq .
 Just use `go test ./...` to run all the unit tests. Here's how it should look
 like :
 
-```go
+```sh
 $ go test ./...
 ?       demyst-code-kata        [no test files]
 ?       demyst-code-kata/arg    [no test files]
@@ -49,7 +49,7 @@ ok      demyst-code-kata/todo   0.006s
 
 For code coverage, we just use the coverage tools shipped with go
 
-```go
+```sh
 $ go test -cover ./...
 ?       demyst-code-kata        [no test files]
 ?       demyst-code-kata/arg    [no test files]
@@ -60,7 +60,7 @@ ok      demyst-code-kata/todo   0.005s  coverage: 100.0% of statements
 
 For more detailed coverage report we can do the following :
 
-```go
+```sh
 $ go test -coverprofile=c.out ./... && go tool cover -html=c.out -o coverage.html
 ?       demyst-code-kata        [no test files]
 ?       demyst-code-kata/arg    [no test files]
