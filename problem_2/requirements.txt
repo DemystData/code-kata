@@ -1,0 +1,2 @@
+Faker==33.1.0
+dask[complete]==2024.12.0
