@@ -1,0 +1,2 @@
+John  25  M  NY   USA    New York    1234   Developer   3000         Manager
+Mary  32  F  LA   USA    Los Angeles  5000   Designer    4000         Leader
