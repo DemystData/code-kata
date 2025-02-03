@@ -1,0 +1,29 @@
+{
+    "ColumnNames": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10"
+    ],
+    "Offsets": [
+        "5",
+        "12",
+        "3",
+        "2",
+        "13",
+        "7",
+        "10",
+        "13",
+        "20",
+        "13"
+    ],
+    "FixedWidthEncoding": "windows-1252",
+    "IncludeHeader": "True",
+    "DelimitedEncoding": "utf-8"
+}
