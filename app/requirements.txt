@@ -1,0 +1,2 @@
+faker
+pyspark  # Required for distributed CSV processing

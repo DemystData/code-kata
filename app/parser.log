@@ -1,0 +1,4 @@
+2025-02-24 13:16:45,633 - INFO - CSV header written successfully.
+2025-02-24 13:16:45,634 - INFO - Parsed fixed-width file: app/fixed_width_input.txt to CSV: app/output.csv
+2025-02-24 13:17:09,704 - INFO - CSV header written successfully.
+2025-02-24 13:17:09,704 - INFO - Parsed fixed-width file: app/fixed_width_input.txt to CSV: app/test_output.csv
